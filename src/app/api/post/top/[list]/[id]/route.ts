@@ -19,9 +19,7 @@ export async function GET(
 	if (params.list !== 'list_anime_top') {
 		return NextResponse.json({ status: 'error' })
 	}
-	const supabase = createRouteHandlerClient<Database>({
-		cookies,
-	})
+	const supabase = createRouteHandlerClient<Database>({ cookies })
 
 	const { data, error }: any = await supabase
 		.rpc('list_anime_top_position', {
@@ -48,9 +46,7 @@ export async function POST(
 		}
 	}
 ) {
-	const supabase = createRouteHandlerClient<Database>({
-		cookies,
-	})
+	const supabase = createRouteHandlerClient<Database>({ cookies })
 
 	const {
 		data: { session },
@@ -145,9 +141,7 @@ export async function DELETE(
 		}
 	}
 ) {
-	const supabase = createRouteHandlerClient<Database>({
-		cookies,
-	})
+	const supabase = createRouteHandlerClient<Database>({ cookies })
 
 	const {
 		data: { session },

@@ -2,7 +2,6 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
-import { toInt } from 'radash'
 
 //! To-Do
 // Update whole list
@@ -19,9 +18,7 @@ export async function PUT(
 ) {
 	const data = await request.json()
 
-	const supabase = createRouteHandlerClient<Database>({
-		cookies,
-	})
+	const supabase = createRouteHandlerClient<Database>({ cookies })
 	const {
 		data: { session },
 		error,

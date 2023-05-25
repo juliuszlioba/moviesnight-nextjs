@@ -10,7 +10,7 @@ import {
 import type { Database } from '@/types/database.types'
 
 export function LoginButton() {
-	const router = useRouter()
+	//const router = useRouter()
 	const supabase = createClientComponentClient<Database>()
 
 	const handleLogin = async () => {
@@ -20,7 +20,6 @@ export function LoginButton() {
 				redirectTo: `${process.env.NEXT_PUBLIC_WEBSITE_URL as string}/welcome`,
 			},
 		})
-		router.refresh()
 	}
 
 	return (

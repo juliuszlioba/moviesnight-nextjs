@@ -1,5 +1,8 @@
-import Link from 'next/link'
 import WelcomeMessage from './message'
+import { ContinueButton } from './button'
+
+// do not cache this page
+export const revalidate = 0
 
 export default function Page() {
 	return (
@@ -9,12 +12,13 @@ export default function Page() {
 					<WelcomeMessage />
 				</div>
 				<div className="flex justify-center">
-					<Link
+					{/* <Link
 						href="/"
 						className="flex whitespace-nowrap rounded-md border-2 border-fuchsia-800 bg-fuchsia-800 p-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
 					>
 						Continue
-					</Link>
+					</Link> */}
+					<ContinueButton />
 				</div>
 			</div>
 		</div>

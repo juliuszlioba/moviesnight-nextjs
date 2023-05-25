@@ -18,9 +18,7 @@ export async function PUT(
 		}
 	}
 ) {
-	const supabase = createRouteHandlerClient<Database>({
-		cookies,
-	})
+	const supabase = createRouteHandlerClient<Database>({ cookies })
 
 	const {
 		data: { session },
