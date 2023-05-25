@@ -1,13 +1,17 @@
 'use client'
 
-import { useSupabase } from '../app/supabase-provider'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
 import {
 	UserCircleIcon,
 	ArrowLeftOnRectangleIcon,
 } from '@heroicons/react/24/outline'
 
+import type { Database } from '@/types/database.types'
+
 export function LoginButton() {
-	const { supabase } = useSupabase()
+	const router = useRouter()
+	const supabase = createClientComponentClient<Database>()
 
 	const handleLogin = async () => {
 		await supabase.auth.signInWithOAuth({
@@ -16,6 +20,7 @@ export function LoginButton() {
 				redirectTo: `${process.env.NEXT_PUBLIC_WEBSITE_URL as string}/welcome`,
 			},
 		})
+		router.refresh()
 	}
 
 	return (
@@ -31,10 +36,12 @@ export function LoginButton() {
 }
 
 export function LogOutButton() {
-	const { supabase } = useSupabase()
+	const router = useRouter()
+	const supabase = createClientComponentClient<Database>()
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut()
+		router.refresh()
 	}
 
 	return (

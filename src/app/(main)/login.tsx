@@ -1,7 +1,16 @@
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import type { Database } from '@/types/database.types'
+
 import Image from 'next/image'
 import { LoginButton, LogOutButton } from '@/components/authButtons'
 
-export default function Login({ session }: any) {
+export default async function Login() {
+	const supabase = createServerComponentClient<Database>({ cookies })
+	const {
+		data: { session },
+	} = await supabase.auth.getSession()
+
 	if (!session) {
 		return (
 			<div className="flex">

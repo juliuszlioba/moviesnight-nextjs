@@ -1,15 +1,17 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
-import type { Database } from '@/types/database.types'
+// import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+// import { cookies } from 'next/headers'
+// import type { Database } from '@/types/database.types'
 import Image from 'next/image'
 
 export default async function Page() {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
-	const { data, count, error } = await supabase
-		.from('posts')
-		.select('*', { count: 'exact' })
+	// const supabase = createServerComponentClient<Database>({
+	// 	cookies,
+	// })
+	// const { data, count, error } = await supabase
+	// 	.from('posts')
+	// 	.select('*', { count: 'exact' })
+
+	const count = 5
 
 	return (
 		<main>

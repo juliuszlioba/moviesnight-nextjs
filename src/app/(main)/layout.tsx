@@ -1,28 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Login from './login'
-import { MainNav } from './nav'
-
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
-
-import type { Database } from '@/types/database.types'
+import MainNav from './nav'
 import Refresh from '@/components/refresh'
-import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
-export default async function MaindLayout({
+export default function MaindLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
-	const {
-		data: { session },
-		error,
-	} = await supabase.auth.getSession()
-
 	return (
 		<main className="w-full max-w-screen-lg md:mt-4 2xl:mt-24">
 			<nav className="flex items-center justify-between pb-4 pt-2">
@@ -36,16 +22,10 @@ export default async function MaindLayout({
 					<Refresh />
 				</div>
 				<div className="flex items-center gap-2">
-					{session ? (
-						<Link
-							href="/add"
-							className="rounded-full p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
-						>
-							<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
-						</Link>
-					) : null}
+					{/* @ts-expect-error next version of TS will fix this */}
 					<MainNav />
-					<Login session={session} />
+					{/* @ts-expect-error next version of TS will fix this */}
+					<Login />
 				</div>
 			</nav>
 			{children}
