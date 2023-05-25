@@ -1,7 +1,7 @@
 import Error from '@/components/error'
 
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 
 export default async function AddRootLayout({
@@ -9,8 +9,7 @@ export default async function AddRootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const { data, error } = await supabase.auth.getSession()

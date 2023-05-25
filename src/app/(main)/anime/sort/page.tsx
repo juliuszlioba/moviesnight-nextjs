@@ -1,12 +1,11 @@
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import ListItem from '@/components/post-list-item'
 import SortableListContainer from './sortableListContainer'
 
 export default async function Page() {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const {

@@ -1,5 +1,5 @@
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 
 import ListItemMinimal from '@/components/post-list-item-minimal'
@@ -7,8 +7,7 @@ import Error from '@/components/error'
 import Header from './header'
 
 export default async function Page() {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const {

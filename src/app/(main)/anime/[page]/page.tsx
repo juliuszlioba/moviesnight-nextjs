@@ -3,16 +3,15 @@ import ListItem from '@/components/post-list-item'
 import Error from '@/components/error'
 import Pagination from '@/components/pagination'
 
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 
 export default async function Page({ params }: { params: { page: string } }) {
 	const curentPage = toInt(params.page)
 	const postlimit = toInt(process.env.NEXT_PUBLIC_POSTS_LIMIT as string)
 
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const { data, error } = await supabase.auth.getSession()

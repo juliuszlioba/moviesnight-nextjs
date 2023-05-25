@@ -1,6 +1,6 @@
-import { createRouteHandlerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
-import { headers, cookies } from 'next/headers'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import { toInt } from 'radash'
 
@@ -19,8 +19,7 @@ export async function GET(
 	if (params.list !== 'list_anime_top') {
 		return NextResponse.json({ status: 'error' })
 	}
-	const supabase = createRouteHandlerSupabaseClient<Database>({
-		headers,
+	const supabase = createRouteHandlerClient<Database>({
 		cookies,
 	})
 
@@ -49,8 +48,7 @@ export async function POST(
 		}
 	}
 ) {
-	const supabase = createRouteHandlerSupabaseClient<Database>({
-		headers,
+	const supabase = createRouteHandlerClient<Database>({
 		cookies,
 	})
 
@@ -147,8 +145,7 @@ export async function DELETE(
 		}
 	}
 ) {
-	const supabase = createRouteHandlerSupabaseClient<Database>({
-		headers,
+	const supabase = createRouteHandlerClient<Database>({
 		cookies,
 	})
 

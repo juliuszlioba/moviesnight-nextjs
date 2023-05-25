@@ -1,6 +1,6 @@
-import { createRouteHandlerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { NextRequest, NextResponse } from 'next/server'
-import { headers, cookies } from 'next/headers'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import { toInt } from 'radash'
 
@@ -19,8 +19,7 @@ export async function PUT(
 ) {
 	const data = await request.json()
 
-	const supabase = createRouteHandlerSupabaseClient<Database>({
-		headers,
+	const supabase = createRouteHandlerClient<Database>({
 		cookies,
 	})
 	const {

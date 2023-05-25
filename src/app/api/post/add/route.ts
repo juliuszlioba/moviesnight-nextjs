@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server'
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import { TMDBresultsEntity } from '@/types/tmdb.types'
 import slugify from '@/utils/slugify'
 
 export async function POST(request: Request) {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const {

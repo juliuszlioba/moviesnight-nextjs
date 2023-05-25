@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Error from '@/components/error'
 import { ClockIcon } from '@heroicons/react/24/outline'
 
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import TmdbLink from '@/components/tmdb-link'
 import PostEdit from '@/components/post-edit'
@@ -13,8 +13,7 @@ export default async function Page({
 }: {
 	params: { year: string; slug: string }
 }) {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const { data, error } = await supabase.auth.getSession()

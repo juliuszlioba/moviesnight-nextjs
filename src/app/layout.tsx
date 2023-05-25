@@ -26,7 +26,9 @@ export default async function RootLayout({
 		<html lang="en" className={quicksand.variable}>
 			<body className="flex min-h-screen flex-col bg-gray-900 text-white">
 				<SupabaseProvider>
-					<div className="px-3 2xl:px-1.5">{children}</div>
+					<div className="flex w-full justify-center px-3 2xl:px-1.5">
+						{children}
+					</div>
 				</SupabaseProvider>
 			</body>
 		</html>

@@ -1,5 +1,5 @@
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 import GridListItem from '@/components/post-grid-list-item'
 
@@ -13,8 +13,7 @@ export default async function Page() {
 	const curentPage = 1
 	const postlimit = toInt(process.env.NEXT_PUBLIC_POSTS_GRID_LIMIT as string)
 
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 

@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Login from './login'
 import { MainNav } from './nav'
 
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { headers, cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 import type { Database } from '@/types/database.types'
 import Refresh from '@/components/refresh'
@@ -15,8 +15,7 @@ export default async function MaindLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const supabase = createServerComponentSupabaseClient<Database>({
-		headers,
+	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
 	const {
@@ -25,7 +24,7 @@ export default async function MaindLayout({
 	} = await supabase.auth.getSession()
 
 	return (
-		<main className="md:mt-4 2xl:mx-24 2xl:mt-24">
+		<main className="w-full max-w-screen-lg md:mt-4 2xl:mt-24">
 			<nav className="flex items-center justify-between pb-4 pt-2">
 				<div className="flex items-center">
 					<Link
