@@ -1,0 +1,31 @@
+{
+	"workbench.colorCustomizations": {
+		"titleBar.activeBackground": "#a21caf",
+		"titleBar.activeForeground": "#fff",
+		"titleBar.inactiveBackground": "#66106f",
+	},
+
+	"editor.guides.bracketPairs": "active",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+
+	"material-icon-theme.folders.associations": {
+		"app/movies": "",
+		"api/v1": "api",
+		"v1/post": "",
+		"v1/posts": ""
+	},
+
+	"typescript.suggest.paths": false,
+	"javascript.suggest.paths": false
+}
