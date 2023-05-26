@@ -1,8 +1,10 @@
-<img src="https://raw.githubusercontent.com/juliuszlioba/moviesnight-nextjs/90fd6ede03557e3b1fc22dd18d30df191169964f/public/img/svg/movieNight_logo.svg" width="200" height="200"/>
+<img src="./public/img/svg/movieNight_logo.svg" width="200" height="200"/>
 
 # moviesNight website
 
 moviesNight Website with Next.js using App Router
+
+Live website > [movies.juliuszlioba.com](https://movies.juliuszlioba.com/)
 
 ## Installation
 
@@ -13,9 +15,15 @@ cd moviesnight-nextjs
 npm install
 ```
 
-Before starting development - start database <br> (Database contains migration file and dummy data to play with)
+Before starting development <br>
+1. start database <br> (Database contains migration file and dummy data to play with)
 ```bash
 npx supabase start
+```
+
+2. fill in enviroment variables
+```bash
+cp .env.example .env
 ```
 
 Start developing or poking around!
