@@ -39,7 +39,12 @@ export default async function Page() {
 				})}
 			</div>
 			{count && (
-				<Pagination curentPage={1} totalCount={count} urlPrefix="grid" />
+				<Pagination
+					curentPage={1}
+					totalCount={count}
+					urlPrefix="grid"
+					grid={true}
+				/>
 			)}
 		</main>
 	)

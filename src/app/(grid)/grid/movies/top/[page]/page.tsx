@@ -40,7 +40,8 @@ export default async function Page({ params }: { params: { page: string } }) {
 				<Pagination
 					curentPage={curentPage}
 					totalCount={count}
-					urlPrefix="grid"
+					urlPrefix="grid/movies/top"
+					grid={true}
 				/>
 			)}
 		</main>

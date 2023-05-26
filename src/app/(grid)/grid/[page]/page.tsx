@@ -43,6 +43,7 @@ export default async function Page({ params }: { params: { page: string } }) {
 					curentPage={curentPage}
 					totalCount={count}
 					urlPrefix="grid"
+					grid={true}
 				/>
 			)}
 		</main>
