@@ -8,30 +8,29 @@ moviesNight Website with Next.js using App Router
 
 Download and install with npm
 ```bash
-  git clone https://github.com/juliuszlioba/moviesnight-nextjs.git
-  cd moviesnight-nextjs
-  npm install
+git clone https://github.com/juliuszlioba/moviesnight-nextjs.git
+cd moviesnight-nextjs
+npm install
 ```
 
-Before starting development - start database
+Before starting development - start database <br> (Database contains migration file and dummy data to play with)
 ```bash
 npx supabase start
 ```
 
-
-Start developing!
+Start developing or poking around!
 ```bash
 npm run dev
 ```
 
-_!! dont forget to shutdown database after development_
+_!! Don't forget to shutdown database after development <br> otherwise it will keep running in the background using computer resources_
 ```bash
 npx supabase stop
 ```
 
 ## Other notices
 ```bash
-# if database was created empty, run:
+# if database was created empty, apply migration file with command:
 npx supabase migration up
 
 # generate typescript types if there are database changes:

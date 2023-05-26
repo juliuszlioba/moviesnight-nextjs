@@ -19,7 +19,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<main className="md:mt-4 2xl:mx-8 2xl:mt-24">
+		<div className="mt-4 w-full 2xl:mx-8 2xl:mt-24">
 			<nav className="flex flex-wrap items-center justify-between pb-4">
 				<Link
 					href="/"
@@ -38,7 +38,7 @@ export default function RootLayout({
 					</Link>
 
 					<Link
-						href="/grid/anime"
+						href="/grid/anime/top"
 						className="flex gap-2 rounded-md p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 					>
 						<HeartIcon className="h-6 w-6" width="24" height="24" />
@@ -46,7 +46,7 @@ export default function RootLayout({
 					</Link>
 
 					<Link
-						href="/grid/movies"
+						href="/grid/movies/top"
 						className="flex gap-2 rounded-md p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 					>
 						<FilmIcon className="h-6 w-6" width="24" height="24" />
@@ -54,7 +54,7 @@ export default function RootLayout({
 					</Link>
 
 					<Link
-						href="/grid/series"
+						href="/grid/series/top"
 						className="flex gap-2 rounded-md p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 					>
 						<TvIcon className="h-6 w-6" width="24" height="24" />
@@ -63,6 +63,6 @@ export default function RootLayout({
 				</div>
 			</nav>
 			{children}
-		</main>
+		</div>
 	)
 }

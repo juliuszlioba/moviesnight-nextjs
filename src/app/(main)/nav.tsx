@@ -3,6 +3,7 @@ import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 
 import { MainNavMenu } from './navMenu'
+import Refresh from '@/components/refresh'
 import Link from 'next/link'
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
@@ -16,12 +17,15 @@ export default async function MainNav() {
 	return (
 		<>
 			{session ? (
-				<Link
-					href="/add"
-					className="rounded-full p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
-				>
-					<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
-				</Link>
+				<>
+					<Refresh />
+					<Link
+						href="/add"
+						className="ml-auto rounded-full p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+					>
+						<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
+					</Link>
+				</>
 			) : null}
 			<MainNavMenu />
 		</>

@@ -8,8 +8,8 @@ export default function GridListItem({ post }: { post: Post }) {
 		<Link
 			href={
 				post.mediatype === 'movie'
-					? `/movies/${post.year}/${post.slug}`
-					: `/series/${post.year}/${post.slug}`
+					? `/grid/movies/${post.year}/${post.slug}`
+					: `/grid/series/${post.year}/${post.slug}`
 			}
 			className="rounded-lg border-2 border-transparent p-1.5 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 		>

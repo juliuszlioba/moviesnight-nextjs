@@ -24,6 +24,10 @@ export default async function Page() {
 					<p>
 						Some records were added retroactively with approximate viewing date.
 					</p>
+					<p>
+						I <strong>do not</strong> add unfinished movies or dropped series to
+						the list.
+					</p>
 				</div>
 				<div>
 					<p>
@@ -60,6 +64,13 @@ export default async function Page() {
 							className="w-24"
 						/>
 					</a>
+				</div>
+				<div className="pb-8">
+					<h1 className="pb-2 text-2xl">Your privacy?</h1>
+					<p>
+						At the moment there are no tracking scripts on the website, so I do
+						not gather any information about your visit.
+					</p>
 				</div>
 			</div>
 		</main>
