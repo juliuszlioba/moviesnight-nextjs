@@ -16,6 +16,9 @@ export const metadata = {
 	},
 }
 
+// Prevent default cache method, overwise error during build
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({
 	children,
 }: {
