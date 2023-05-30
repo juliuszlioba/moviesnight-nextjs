@@ -316,7 +316,7 @@ export default function PostEdit({
 									onChange={(e) => setSortOrder(parseInt(e.target.value))}
 								></input>
 								<button
-									className="rounded-md bg-fuchsia-800 px-5 py-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-800"
+									className="rounded-full bg-fuchsia-800 px-5 py-1 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-800"
 									onClick={handleChangeInAnimeList}
 								>
 									Set
@@ -334,7 +334,7 @@ export default function PostEdit({
 						) : (
 							<div className="mb-4 flex items-center justify-between gap-2">
 								<button
-									className="ml-auto flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="ml-auto flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									onClick={handleAddToAnimeList}
 								>
 									<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
@@ -348,7 +348,7 @@ export default function PostEdit({
 						<div className="mb-4 flex items-center justify-between gap-2 border-t-2 border-dashed border-gray-800 pt-4">
 							{!post.recommended ? (
 								<button
-									className="ml-auto flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="ml-auto flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									onClick={handleAddToMoviesList}
 								>
 									<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
@@ -356,7 +356,7 @@ export default function PostEdit({
 								</button>
 							) : (
 								<button
-									className="ml-auto flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="ml-auto flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									onClick={handleRemoveFromMoviesList}
 								>
 									<TrashIcon className="h-6 w-6" width="24" height="24" />
@@ -370,7 +370,7 @@ export default function PostEdit({
 						<div className="mb-4 flex items-center justify-between gap-2 border-t-2 border-dashed border-gray-800 pt-4">
 							{!post.recommended ? (
 								<button
-									className="ml-auto flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="ml-auto flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									onClick={handleAddToSeriesList}
 								>
 									<PlusCircleIcon className="h-6 w-6" width="24" height="24" />
@@ -378,7 +378,7 @@ export default function PostEdit({
 								</button>
 							) : (
 								<button
-									className="ml-auto flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="ml-auto flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									onClick={handleRemoveFromSeriesList}
 								>
 									<TrashIcon className="h-6 w-6" width="24" height="24" />
@@ -390,7 +390,7 @@ export default function PostEdit({
 
 					<div className="mb-4 flex items-center justify-between gap-2 border-t-2 border-dashed border-gray-800 pt-4">
 						<button
-							className="flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+							className="flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 							onClick={() => setOpenEdit(false)}
 						>
 							<XCircleIcon className="h-6 w-6" width="24" height="24" />
@@ -398,7 +398,7 @@ export default function PostEdit({
 						</button>
 
 						<button
-							className={`flex items-center gap-1 rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none ${
+							className={`flex items-center gap-1 rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none ${
 								linkingAnime && 'ml-auto'
 							}`}
 							onClick={handleUpdate}
@@ -434,7 +434,7 @@ export default function PostEdit({
 					{session && (
 						<div className="flex items-center justify-between gap-1 border-t-2 border-dashed border-gray-800 pt-4">
 							<button
-								className="rounded-lg hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+								className="rounded-full p-1 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 								onClick={() => setOpenEdit(true)}
 							>
 								<PencilSquareIcon className="h-6 w-6" width="24" height="24" />
@@ -455,7 +455,7 @@ export default function PostEdit({
 
 							<button
 								onClick={() => setConfirmDelete(!confirmDelete)}
-								className="rounded-lg text-yellow-700 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+								className="rounded-full p-1 text-yellow-700 hover:text-fuchsia-800 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 							>
 								<TrashIcon className="h-6 w-6" width="24" height="24" />
 							</button>

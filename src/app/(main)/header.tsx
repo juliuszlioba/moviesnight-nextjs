@@ -7,7 +7,7 @@ export default function Header() {
 			<div className="px-1.5">Recently finished:</div>
 			<Link
 				href="/grid"
-				className="flex items-center gap-2 rounded-md p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+				className="flex items-center gap-2 rounded-full p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 				title="grid view"
 			>
 				<Squares2X2Icon className="h-6 w-6" width="24" height="24" />

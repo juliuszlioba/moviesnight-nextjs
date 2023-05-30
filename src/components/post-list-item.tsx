@@ -9,7 +9,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import Loader from '@/components/loader'
 import Link from 'next/link'
 import {
-	ChatBubbleLeftIcon,
+	ChatBubbleOvalLeftIcon,
 	PencilSquareIcon,
 	MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline'
@@ -68,7 +68,7 @@ export default function ListItem({
 											? `/movies/${post.year}/${post.slug}`
 											: `/series/${post.year}/${post.slug}`
 									}
-									className="rounded-lg focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+									className="rounded-lg pt-1 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 								>
 									<h2 className="text-xl">{post.title}</h2>
 								</Link>
@@ -79,7 +79,7 @@ export default function ListItem({
 												? `/movies/${post.year}/${post.slug}`
 												: `/series/${post.year}/${post.slug}`
 										}
-										className="rounded-lg text-gray-800 duration-300 hover:text-fuchsia-500 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+										className="rounded-full p-1 text-gray-800 duration-300 hover:text-fuchsia-500 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 									>
 										<PencilSquareIcon
 											className="h-6 w-6"
@@ -108,10 +108,10 @@ export default function ListItem({
 									{post.review && (
 										<button
 											onClick={() => setOpenReview(!reviewOpen)}
-											className="flex items-center gap-1 rounded-md bg-fuchsia-900 px-2 py-1 text-sm text-white hover:bg-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+											className="flex items-center gap-1 rounded-full p-1 px-2 text-sm font-semibold text-fuchsia-700 hover:text-white focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 										>
-											<ChatBubbleLeftIcon
-												className="h-5 w-5"
+											<ChatBubbleOvalLeftIcon
+												className="h-6 w-6"
 												width="24"
 												height="24"
 											/>{' '}
@@ -138,7 +138,7 @@ export default function ListItem({
 								onClick={() => setOpenReview(!reviewOpen)}
 								className="flex items-center gap-1 rounded-md bg-fuchsia-900 px-2 py-1 text-sm text-white hover:bg-fuchsia-700"
 							>
-								<ChatBubbleLeftIcon
+								<ChatBubbleOvalLeftIcon
 									className="h-5 w-5"
 									width="24"
 									height="24"

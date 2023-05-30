@@ -72,7 +72,7 @@ export default function SearchListItem({
 					) : (
 						<button
 							type="submit"
-							className="whitespace-nowrap rounded-md border-2 border-fuchsia-800 bg-fuchsia-800 p-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+							className="whitespace-nowrap rounded-full border-2 border-fuchsia-800 bg-fuchsia-800 px-4 py-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
 							onClick={add}
 						>
 							Add

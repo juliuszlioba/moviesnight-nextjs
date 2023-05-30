@@ -50,18 +50,17 @@ export default function MaindLayout({
 
 				<div className="flex items-center justify-center gap-4">
 					<p>
-						{`${new Date().getFullYear()}`}
 						<a
 							href="https://juliuszlioba.com"
 							rel="noopener"
-							className="rounded-lg p-1 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+							className="ml-2 rounded-full px-2 py-1 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 						>
-							© juliuszlioba.com
+							{`${new Date().getFullYear()}`} &copy; juliuszlioba.com
 						</a>
 					</p>
 					<Link
 						href="/about"
-						className="rounded-lg p-1 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+						className="rounded-full px-2 py-1 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 					>
 						About
 					</Link>

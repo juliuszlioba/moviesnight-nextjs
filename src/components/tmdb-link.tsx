@@ -16,7 +16,7 @@ export default function TmdbLink({
 			href={link}
 			target="_blank"
 			rel="noreferrer"
-			className="rounded-md bg-fuchsia-800 px-5 py-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+			className="rounded-full bg-fuchsia-800 px-5 py-2 text-white hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 		>
 			More
 		</a>

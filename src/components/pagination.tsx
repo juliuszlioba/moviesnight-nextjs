@@ -22,7 +22,7 @@ export default function Pagination({
 		return (
 			<Link
 				href={`${urlPrefix === '' ? '' : '/' + urlPrefix}/${number}`}
-				className="rounded-md border-2 border-transparent px-2 py-1 hover:border-2 hover:bg-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+				className="rounded-full border-2 border-transparent px-2 py-1 hover:border-2 hover:bg-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 			>
 				{number}
 			</Link>
@@ -40,7 +40,7 @@ export default function Pagination({
 				{curentPage > 1 ? (
 					<PageButton number={1} />
 				) : (
-					<p className="rounded-md border-2 border-fuchsia-700 px-2 py-1 text-white">
+					<p className="rounded-full border-2 border-fuchsia-700 px-2 py-1 text-white">
 						1
 					</p>
 				)}
@@ -48,7 +48,7 @@ export default function Pagination({
 				{curentPage > 3 && <PageButton number={curentPage - 2} />}
 				{curentPage > 2 && <PageButton number={curentPage - 1} />}
 				{curentPage > 1 && curentPage < lastPage && (
-					<p className="rounded-md border-2 border-fuchsia-700 px-2 py-1 text-white">
+					<p className="rounded-full border-2 border-fuchsia-700 px-2 py-1 text-white">
 						{curentPage}
 					</p>
 				)}
@@ -59,7 +59,7 @@ export default function Pagination({
 				{curentPage < lastPage ? (
 					<PageButton number={lastPage} />
 				) : (
-					<p className="rounded-md border-2 border-fuchsia-700 px-2 py-1 text-white">
+					<p className="rounded-full border-2 border-fuchsia-700 px-2 py-1 text-white">
 						{lastPage}
 					</p>
 				)}

@@ -17,7 +17,7 @@ export default function Header({
 			{session && (
 				<Link
 					href="/anime/sort"
-					className="ml-auto flex items-center gap-2 rounded-md p-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+					className="ml-auto flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 				>
 					Reorder
 					<ArrowPathIcon className="h-6 w-6" width="24" height="24" />
