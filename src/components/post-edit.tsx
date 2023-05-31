@@ -451,7 +451,7 @@ export default function PostEdit({
 									</button>
 									{` to delete?`}
 									<p className="pr-2 text-sm">
-										Make sure it's{' '}
+										Make sure it&#39;s{' '}
 										<span className="font-semibold text-pink-600">NOT</span> in
 										any Top list!
 									</p>
