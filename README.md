@@ -48,7 +48,6 @@ npx supabase gen types typescript --local > ./src/types/database.types.ts
 ## 📑 still TO-DO
 
 - [ ] API post/delete: check if post is in some top list and delete from it
-- [ ] API post/add: check if already exist in database before storing in db
 
 ## Documentation
 
