@@ -47,8 +47,26 @@ export async function POST(request: Request) {
 	if (session) {
 		try {
 			const post = await request.json()
+
+			// 1: check for existing record
+			const slug = slugify(post.title! || post.name!)
+			const year =
+				post.release_date?.substring(0, 4) ||
+				post.first_air_date?.substring(0, 4)
+			const { data, count, error } = await supabase
+				.from('posts')
+				.select('*', { count: 'exact' })
+				.eq('slug', slug)
+				.eq('year', year)
+
+			if (count !== 0) {
+				return NextResponse.json({ status: 'error' })
+			}
+
+			// 2: prepare data
 			const dataLoad = preocessData(post)
 
+			// 3: Insert to database
 			const { data: returndata, error: resError } = await supabase
 				.from('posts')
 				.insert(dataLoad)
@@ -59,6 +77,7 @@ export async function POST(request: Request) {
 				return NextResponse.json({ status: 'error' })
 			}
 
+			// 4: Handle ganres
 			await handleGenres(post.genre_ids, returndata.id)
 
 			return NextResponse.json({ status: 'success' })

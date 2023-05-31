@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
 
-//! To-Do
 // Update whole list
 // (list sorting uses client side sorting)
 export async function PUT(

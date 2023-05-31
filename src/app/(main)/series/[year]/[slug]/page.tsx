@@ -27,6 +27,7 @@ export default async function Page({
 		.select('*')
 		.eq('year', `${params.year}`)
 		.eq('slug', `${params.slug}`)
+		.limit(1)
 		.single()
 
 	if (!post) {

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
+import { toInt } from 'radash'
 
 export async function POST(request: Request) {
 	const supabase = createRouteHandlerClient<Database>({ cookies })
@@ -18,9 +19,17 @@ export async function POST(request: Request) {
 		try {
 			const req = await request.json()
 
-			//! TO-DO: check if in some top list and delete from it
+			//! TO-DO
+			// 1. check if in some top list and delete from it
+			// const lists = ['list_anime_top', 'list_movies_top', 'list_series_top']
+			// const { data: moviesListArray } = await supabase
+			// 	.from('list_movies_top')
+			// 	.select(`id, list`)
+			// 	.single()
+			// const check = moviesListArray?.list?.find((el) => el === req.id)
+			// console.log(check)
 
-			// Delete post itself
+			// 2. Delete post record from database
 			const { error: resError } = await supabase
 				.from('posts')
 				.delete()
