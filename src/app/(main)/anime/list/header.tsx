@@ -12,7 +12,8 @@ export default function Header({
 		<div className="mb-4 flex items-center justify-between border-b-2 border-dashed border-gray-800 pb-2">
 			<div className="px-1.5">
 				Total Anime:{' '}
-				<span className="font-semibold text-fuchsia-700">{total}</span>
+				<span className="font-semibold text-fuchsia-700">{total}</span>. In
+				order of interest.
 			</div>
 			{session && (
 				<Link
