@@ -309,7 +309,9 @@ export default function PostEdit({
 
 						{linkingAnime ? (
 							<div className="flex gap-2 border-t-2 border-dashed border-gray-800 pt-4">
-								<input
+								{/*
+								//! BUG: Anime soring bug
+								 <input
 									type="number"
 									className="w-20 rounded border-2 p-2 text-black focus:border-fuchsia-900 focus:outline-none focus:ring-2 focus:ring-fuchsia-800 dark:border-fuchsia-800 dark:bg-gray-800 dark:text-white"
 									value={sortOrder}
@@ -320,7 +322,7 @@ export default function PostEdit({
 									onClick={handleChangeInAnimeList}
 								>
 									Set
-								</button>
+								</button> */}
 								<div className="ml-auto flex items-center gap-1">
 									Remove from Anime list
 									<button
@@ -422,14 +424,16 @@ export default function PostEdit({
 								<p className="quate">{post.review}</p>
 							</div>
 						)}
-						{post.linkanime && sortOrder !== 0 && (
+						{/*
+							//! BUG in anime sort order
+						 {post.linkanime && sortOrder !== 0 && (
 							<div className="flex items-center gap-1 border-t-2 border-dashed border-gray-800 pt-4">
 								<span className="rounded-md bg-fuchsia-700 px-2 py-1">
 									{sortOrder}
 								</span>
 								in Anime Top List
 							</div>
-						)}
+						)} */}
 					</div>
 					{session && (
 						<div className="flex items-center justify-between gap-1 border-t-2 border-dashed border-gray-800 pt-4">
