@@ -14,19 +14,18 @@ export default function SortableListContainer({ posts }: { posts: any }) {
 	const router = useRouter()
 
 	const handleSave = () => {
-		//!BUG in supabase function returning sorted by id list
-		// setLoading(true)
-		// let listArray: number[] = []
-		// items.forEach((item: Post) => {
-		// 	listArray.push(item.id)
-		// })
-		//
-		// fetch('/api/post/top/list_anime_top/', {
-		// 	method: 'PUT',
-		// 	body: JSON.stringify(listArray),
-		// }).then((status) => {
-		// 	status.ok ? router.push(`/anime`) : console.log('error')
-		// })
+		setLoading(true)
+		let listArray: number[] = []
+		items.forEach((item: Post) => {
+			listArray.push(item.id)
+		})
+
+		fetch('/api/post/top/list_anime_top/', {
+			method: 'PUT',
+			body: JSON.stringify(listArray),
+		}).then((status) => {
+			status.ok ? router.push(`/anime`) : console.log('error')
+		})
 	}
 
 	return (

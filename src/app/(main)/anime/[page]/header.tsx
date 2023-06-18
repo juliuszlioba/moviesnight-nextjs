@@ -16,8 +16,6 @@ export default function Header({
 				in no particular order.
 			</div>
 
-			{/*
-			//!BUG in supabase function returning sorted by id list
 			{session && (
 				<Link
 					href="/anime/sort"
@@ -26,7 +24,7 @@ export default function Header({
 					Reorder
 					<ArrowPathIcon className="h-6 w-6" width="24" height="24" />
 				</Link>
-			)} */}
+			)}
 			<Link
 				href="/anime/list"
 				className="flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"

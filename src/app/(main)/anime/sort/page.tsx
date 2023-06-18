@@ -30,7 +30,7 @@ export default async function Page() {
 							key={index}
 							post={post}
 							session={session ? true : false}
-							listRating={false} //!BUG in supabase function returning sorted by id list
+							listRating={true}
 							positionInList={index + 1}
 						/>
 					)

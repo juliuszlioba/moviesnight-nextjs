@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: { page: string } }) {
 							key={index}
 							post={post}
 							session={session ? true : false}
-							listRating={false} //!BUG in supabase function returning sorted by id list
+							listRating={true}
 							positionInList={index + (curentPage - 1) * postlimit + 1}
 						/>
 					)

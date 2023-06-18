@@ -14,8 +14,6 @@ export default function Header({
 				Total Anime:{' '}
 				<span className="font-semibold text-fuchsia-700">{total}</span>
 			</div>
-			{/*
-			//!BUG in supabase function returning sorted by id list
 			{session && (
 				<Link
 					href="/anime/sort"
@@ -24,7 +22,7 @@ export default function Header({
 					Reorder
 					<ArrowPathIcon className="h-6 w-6" width="24" height="24" />
 				</Link>
-			)} */}
+			)}
 		</div>
 	)
 }

@@ -46,7 +46,7 @@ export default async function Page() {
 							key={index}
 							post={post}
 							session={session ? true : false}
-							listRating={false} //! BUG: supabase function problem returning all sorted
+							listRating={true}
 							positionInList={index + 1}
 						/>
 					)
