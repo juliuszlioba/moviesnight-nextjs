@@ -45,6 +45,10 @@ npx supabase migration up
 npx supabase gen types typescript --local > ./src/types/database.types.ts
 ```
 
+## ❗ Known bugs
+
+- [ ] supabase started to return Anime list weirdly sorted by id. I sitll need inverstigate the problem. Need new solution?
+
 ## 📑 still TO-DO
 
 - [ ] API post/delete: check if post is in some top list and delete from it

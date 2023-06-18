@@ -29,9 +29,7 @@ export default function MaindLayout({
 					</Link>
 				</div>
 				<div className="flex w-full items-center justify-end gap-2">
-					{/* @ts-expect-error next version of TS will fix this */}
 					<MainNav />
-					{/* @ts-expect-error next version of TS will fix this */}
 					<Login />
 				</div>
 			</nav>

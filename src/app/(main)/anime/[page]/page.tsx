@@ -6,6 +6,7 @@ import Pagination from '@/components/pagination'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import type { Database } from '@/types/database.types'
+import Header from '../header'
 
 export default async function Page({ params }: { params: { page: string } }) {
 	const curentPage = toInt(params.page)
@@ -14,7 +15,10 @@ export default async function Page({ params }: { params: { page: string } }) {
 	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
-	const { data, error } = await supabase.auth.getSession()
+	const {
+		data: { session },
+		error,
+	} = await supabase.auth.getSession()
 
 	if (error) {
 		return <Error message="Problem with loading from database" />
@@ -53,14 +57,15 @@ export default async function Page({ params }: { params: { page: string } }) {
 
 	return (
 		<main>
+			<Header total={count} session={session ? true : false} />
 			<div className="flex flex-col px-4 2xl:px-1.5">
 				{posts.map((post, index: number) => {
 					return (
 						<ListItem
 							key={index}
 							post={post}
-							session={data.session ? true : false}
-							listRating={true}
+							session={session ? true : false}
+							listRating={false} //!BUG in supabase function returning sorted by id list
 							positionInList={index + (curentPage - 1) * postlimit + 1}
 						/>
 					)
