@@ -39,7 +39,7 @@ export default async function Page() {
 	return (
 		<main>
 			<Header total={count} session={session ? true : false} />
-			<div className="flex flex-col px-4 2xl:px-1.5">
+			<div className="flex flex-col">
 				{posts.map((post, index: number) => {
 					return (
 						<ListItem

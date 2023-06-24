@@ -16,22 +16,24 @@ export default function Header({
 				order of interest.
 			</div>
 
-			{session && (
+			<div className="flex flex-wrap items-center justify-end">
+				{session && (
+					<Link
+						href="/anime/sort"
+						className="ml-auto flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+					>
+						Reorder
+						<ArrowPathIcon className="h-6 w-6" width="24" height="24" />
+					</Link>
+				)}
 				<Link
-					href="/anime/sort"
-					className="ml-auto flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
+					href="/anime/list"
+					className="flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 				>
-					Reorder
-					<ArrowPathIcon className="h-6 w-6" width="24" height="24" />
+					Full list
+					<ListBulletIcon className="h-6 w-6" width="24" height="24" />
 				</Link>
-			)}
-			<Link
-				href="/anime/list"
-				className="flex items-center gap-2 rounded-full px-2 py-1.5 hover:text-fuchsia-700 focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
-			>
-				Full list
-				<ListBulletIcon className="h-6 w-6" width="24" height="24" />
-			</Link>
+			</div>
 		</div>
 	)
 }

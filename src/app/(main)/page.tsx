@@ -44,7 +44,7 @@ export default async function Home() {
 	return (
 		<main>
 			<Header />
-			<div className="flex flex-col ">
+			<div className="flex flex-col">
 				{posts.map((post, index: number) => {
 					return (
 						<ListItem

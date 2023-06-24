@@ -136,10 +136,10 @@ export default function ListItem({
 						{post.review && (
 							<button
 								onClick={() => setOpenReview(!reviewOpen)}
-								className="flex items-center gap-1 rounded-md bg-fuchsia-900 px-2 py-1 text-sm text-white hover:bg-fuchsia-700"
+								className="flex items-center gap-1 rounded-full p-1 px-2 text-sm font-semibold text-fuchsia-700 hover:text-white focus:ring-2 focus:ring-fuchsia-700 focus-visible:outline-none"
 							>
 								<ChatBubbleOvalLeftIcon
-									className="h-5 w-5"
+									className="h-6 w-6"
 									width="24"
 									height="24"
 								/>{' '}
