@@ -25,7 +25,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={quicksand.variable}>
+		<html lang="en" className={quicksand.variable} suppressHydrationWarning>
 			<body className="flex min-h-screen flex-col bg-gray-900 text-white">
 				<div className="flex w-full justify-center px-3 2xl:px-1.5">
 					{children}

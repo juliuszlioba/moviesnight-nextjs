@@ -208,6 +208,8 @@ export default function PostEdit({
 			status.ok ? router.push('/') : console.log('error')
 			setLoading(false)
 		})
+
+		router.refresh()
 	}
 
 	async function getAnimeListPostion() {

@@ -30,6 +30,8 @@ export default function SearchListItem({
 				? router.push(`/${mediaType}/${year.substring(0, 4)}/${slug}`)
 				: console.log('error')
 		})
+
+		router.refresh()
 	}
 
 	return (
