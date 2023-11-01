@@ -8,46 +8,44 @@ Live website > [movies.juliuszlioba.com](https://movies.juliuszlioba.com/)
 
 ## Installation
 
-Download and install with npm
+Download and install
 ```bash
 git clone https://github.com/juliuszlioba/moviesnight-nextjs.git
 cd moviesnight-nextjs
-npm install
+pnpm install
 ```
 
-Before starting development <br>
-1. start database <br> (Database contains migration file and dummy data to play with)
-```bash
-npx supabase start
-```
-
-2. fill in enviroment variables
+1. fill in enviroment variables
 ```bash
 cp .env.example .env
 ```
 
+Before starting development <br>
+2. start database <br> (Database contains migration file and dummy data to play with)
+```bash
+pnpm supabase start
+```
+
 Start developing or poking around!
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 _!! Don't forget to shutdown database after development <br> otherwise it will keep running in the background using computer resources_
 ```bash
-npx supabase stop
+pnpm supabase stop
 ```
 
 ## Other notices
 ```bash
 # if database was created empty, apply migration file with command:
-npx supabase migration up
+pnpm supabase migration up
 
 # generate typescript types if there are database changes:
-npx supabase gen types typescript --local > ./src/types/database.types.ts
+pnpm supabase gen types typescript --local > ./lib/database.types.ts
 ```
 
-## 📑 still TO-DO
-
-- [ ] API post/delete: check if post is in some top list and delete from it
+<!-- ## 📑 still TO-DO -->
 
 ## Documentation
 
