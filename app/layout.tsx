@@ -1,10 +1,9 @@
+import supabaseServerClient from '@/lib/supabase'
 import './styles/globals.css'
 
-import AuthProvider from '@/components/auth-provider'
 import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
-import { cookies } from 'next/headers'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import AuthProvider from '@/components/auth-provider'
 
 const quicksand = Quicksand({
 	subsets: ['latin'],
@@ -26,8 +25,7 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	cookies().getAll() // Keep cookies in the JS execution context for Next.js build
-	const supabase = createServerComponentClient({ cookies })
+	const supabase = await supabaseServerClient()
 
 	const {
 		data: { session },

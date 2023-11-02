@@ -1,13 +1,8 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
-import type { Database } from '@/lib/database.types'
 import Image from 'next/image'
+import supabaseServerClient from '@/lib/supabase'
 
 export default async function AboutPage() {
-	cookies().getAll() // Keep cookies in the JS execution context for Next.js build
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const { data, count, error } = await supabase
 		.from('posts')
 		.select('*', { count: 'exact' })

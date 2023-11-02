@@ -1,16 +1,14 @@
 'use server'
 
 import * as z from 'zod'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+
 import { add, formatISO } from 'date-fns'
 import { toInt } from 'radash'
 import { revalidatePath } from 'next/cache'
 import slugify from '@/lib/slugify'
-
-import type { Database } from './database.types'
 import type { PostEditFormSchema } from '@/lib/post.types'
-import type { TMDBresultsEntity } from './tmdb.types'
+import type { TMDBresultsEntity } from '@/lib/tmdb.types'
+import supabaseServerClient from '@/lib/supabase'
 
 export interface Status {
 	status: 'success' | 'error' | 'unauthorised'
@@ -27,9 +25,7 @@ export async function addPost({
 }: {
 	post: TMDBresultsEntity
 }): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -128,9 +124,7 @@ export async function addPostToTopList({
 	id,
 	list,
 }: AddPostToListProps): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -201,9 +195,7 @@ export async function updatePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -305,9 +297,7 @@ export async function editPostPositionInTopList({
 	list,
 	position,
 }: EditPostPositionInTopListProps): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -396,9 +386,7 @@ export async function updateTopList({
 	listType: ListTypes
 	newList: number[]
 }): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -450,9 +438,7 @@ export async function deletePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,
@@ -519,9 +505,7 @@ export async function removePostFromTopList({
 	list,
 	handlePostMeta = false,
 }: RemovePostToListProps): Promise<Status> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 		error: sessionError,

@@ -11,7 +11,7 @@ import { StarRating } from '../star-rating'
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '../ui/button'
 import Link from 'next/link'
-import { Session } from '@supabase/auth-helpers-nextjs'
+import type { Session } from '@supabase/supabase-js'
 
 import {
 	AlertDialog,
@@ -147,11 +147,13 @@ export default async function PostItem({
 							in Anime Top List
 						</div>
 
-						{session && (<EditPostPosition
-							id={post.id}
-							listposition={listposition}
-							list={'list_anime_top'}
-						/>)}
+						{session && (
+							<EditPostPosition
+								id={post.id}
+								listposition={listposition}
+								list={'list_anime_top'}
+							/>
+						)}
 					</div>
 				)}
 			</div>

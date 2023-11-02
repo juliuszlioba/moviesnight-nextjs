@@ -11,7 +11,7 @@ import { StarRating } from '@/components/star-rating'
 import { Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import { useState } from 'react'
-import { Session } from '@supabase/auth-helpers-nextjs'
+import type { Session } from '@supabase/supabase-js'
 
 export default function PostsListItem({
 	post,

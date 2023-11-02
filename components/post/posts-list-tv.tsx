@@ -1,9 +1,7 @@
 import Pagination from '@/components/pagination'
 import PostsListItem from '@/components/post/posts-list-item'
 import { fetchTopSeriesPosts } from '@/lib/data'
-import { Database } from '@/lib/database.types'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+import supabaseServerClient from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 
 export default async function PostsListTopSeriesPosts({
@@ -11,9 +9,7 @@ export default async function PostsListTopSeriesPosts({
 }: {
 	currentPage?: number
 }) {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 	} = await supabase.auth.getSession()

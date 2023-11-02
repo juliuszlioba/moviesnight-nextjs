@@ -1,6 +1,4 @@
-import type { Database } from './database.types'
-import { cookies } from 'next/headers'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import supabaseServerClient from '@/lib/supabase'
 import { toInt } from 'radash'
 import type { TMDBresultsEntity } from './tmdb.types'
 
@@ -16,9 +14,7 @@ export async function fetchAllPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
@@ -36,9 +32,7 @@ export async function fetchAllPosts({
 }
 
 export async function fetchAllPostsCount() {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
@@ -61,9 +55,7 @@ export async function fetchTopAnimePosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -78,9 +70,7 @@ export async function fetchTopAnimePosts({
 }
 
 export async function fetchAnimePostsCount() {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		// 1. Get current list
@@ -110,9 +100,7 @@ export async function fetchTopMoviesPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -134,9 +122,7 @@ export async function fetchTopSeriesPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -157,9 +143,7 @@ export async function fetchPost({
 	slug: string
 	year: number
 }) {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		const { data: post } = await supabase
@@ -211,9 +195,7 @@ export async function getAnimeListPostion({
 }: {
 	id: number
 }): Promise<number> {
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		//! any
@@ -238,9 +220,7 @@ export async function fetchSearchResults({
 	curentPage?: number
 }) {
 	const postLimit = POSTLIMIT
-	const supabase = createServerComponentClient<Database>({
-		cookies,
-	})
+	const supabase = await supabaseServerClient()
 
 	try {
 		const { data: posts, count } = await supabase

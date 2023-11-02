@@ -3,13 +3,10 @@ import Link from 'next/link'
 import Login from './login'
 import { NavPagesDropdown } from './site-header-pages-dropdown'
 import AddPost from './site-header-add-post-button'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { Database } from '@/lib/database.types'
-import { cookies } from 'next/headers'
+import supabaseServerClient from '@/lib/supabase'
 
 export default async function SiteHeader() {
-	cookies().getAll() // Keep cookies in the JS execution context for Next.js build
-	const supabase = createServerComponentClient<Database>({ cookies })
+	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
 	} = await supabase.auth.getSession()
