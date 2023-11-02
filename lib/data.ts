@@ -2,16 +2,20 @@ import type { Database } from './database.types'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { toInt } from 'radash'
-import type { TMDBresultsEntity, TMDBsearchResponse } from './tmdb.types'
+import type { TMDBresultsEntity } from './tmdb.types'
 
 const POSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_LIMIT)
+const GRIDPOSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_GRID_LIMIT)
 const TMDB_API_KEY = process.env.TMDB_API_KEY
 
 export async function fetchAllPosts({
 	curentPage = 1,
+	grid = false,
 }: {
 	curentPage?: number
+	grid?: boolean
 }) {
+	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
@@ -22,7 +26,7 @@ export async function fetchAllPosts({
 			.from('posts')
 			.select('*', { count: 'exact' })
 			.order('watchedat', { ascending: false })
-			.range(POSTLIMIT * curentPage - POSTLIMIT, POSTLIMIT * curentPage - 1)
+			.range(postLimit * curentPage - postLimit, postLimit * curentPage - 1)
 
 		return { posts, count: count || 0 }
 	} catch (error) {
@@ -51,9 +55,12 @@ export async function fetchAllPostsCount() {
 
 export async function fetchTopAnimePosts({
 	curentPage = 1,
+	grid = false,
 }: {
 	curentPage?: number
+	grid?: boolean
 }) {
+	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
@@ -61,7 +68,7 @@ export async function fetchTopAnimePosts({
 	try {
 		const { data: posts, count } = await supabase
 			.rpc('list_anime_top', {}, { count: 'exact' })
-			.range(POSTLIMIT * curentPage - POSTLIMIT, POSTLIMIT * curentPage - 1)
+			.range(postLimit * curentPage - postLimit, postLimit * curentPage - 1)
 
 		return { posts, count: count || 0 }
 	} catch (error) {
@@ -97,9 +104,12 @@ export async function fetchAnimePostsCount() {
 
 export async function fetchTopMoviesPosts({
 	curentPage = 1,
+	grid = false,
 }: {
 	curentPage?: number
+	grid?: boolean
 }) {
+	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
@@ -107,7 +117,7 @@ export async function fetchTopMoviesPosts({
 	try {
 		const { data: posts, count } = await supabase
 			.rpc('list_movies_top', {}, { count: 'exact' })
-			.range(POSTLIMIT * curentPage - POSTLIMIT, POSTLIMIT * curentPage - 1)
+			.range(postLimit * curentPage - postLimit, postLimit * curentPage - 1)
 
 		return { posts, count: count || 0 }
 	} catch (error) {
@@ -118,9 +128,12 @@ export async function fetchTopMoviesPosts({
 
 export async function fetchTopSeriesPosts({
 	curentPage = 1,
+	grid = false,
 }: {
 	curentPage?: number
+	grid?: boolean
 }) {
+	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 	const supabase = createServerComponentClient<Database>({
 		cookies,
 	})
@@ -214,6 +227,33 @@ export async function getAnimeListPostion({
 	} catch (error) {
 		console.error('Database Error:', error)
 		throw new Error('Failed to fetch Anime Post position.')
+	}
+}
+
+export async function fetchSearchResults({
+	searchQuery,
+	curentPage = 1,
+}: {
+	searchQuery: string
+	curentPage?: number
+}) {
+	const postLimit = POSTLIMIT
+	const supabase = createServerComponentClient<Database>({
+		cookies,
+	})
+
+	try {
+		const { data: posts, count } = await supabase
+			.from('posts')
+			.select('*', { count: 'exact' })
+			.ilike('title', `%${searchQuery}%`)
+			.order('watchedat', { ascending: false })
+			.range(postLimit * curentPage - postLimit, postLimit * curentPage - 1)
+
+		return { posts, count: count || 0 }
+	} catch (error) {
+		console.error('Database Error:', error)
+		throw new Error('Failed to fetch All Posts.')
 	}
 }
 

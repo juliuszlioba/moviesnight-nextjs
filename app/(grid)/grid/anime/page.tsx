@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import PostsGrid from '@/components/post/posts-grid'
 import { PostsGridSkeleton } from '@/components/skeletons'
+import PostsGridAnime from '@/components/post/posts-grid-anime'
 
 export default async function GridPage({
 	searchParams,
@@ -14,7 +14,7 @@ export default async function GridPage({
 	return (
 		<main className="flex flex-col">
 			<Suspense key={currentPage} fallback={<PostsGridSkeleton grid={true} />}>
-				<PostsGrid currentPage={currentPage} />
+				<PostsGridAnime currentPage={currentPage} />
 			</Suspense>
 		</main>
 	)

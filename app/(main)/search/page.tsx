@@ -1,3 +1,8 @@
+import SearchList from '@/components/post/search-list'
+import Search from '@/components/search'
+import { SearchWebsiteListSkeleton } from '@/components/skeletons'
+import { Suspense } from 'react'
+
 export default async function AnimePage({
 	searchParams,
 }: {
@@ -8,5 +13,20 @@ export default async function AnimePage({
 }) {
 	const currentPage = Number(searchParams?.page) || 1
 
-	return <div>Search Page for searching {searchParams?.search}</div>
+	return (
+		<div className="space-y-4">
+			<Search placeholder="Search website" />
+			{searchParams?.search && (
+				<Suspense
+					key={`${searchParams.search}-${currentPage}`}
+					fallback={<SearchWebsiteListSkeleton />}
+				>
+					<SearchList
+						searchQuery={searchParams?.search}
+						currentPage={currentPage}
+					/>
+				</Suspense>
+			)}
+		</div>
+	)
 }

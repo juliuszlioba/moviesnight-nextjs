@@ -1,7 +1,7 @@
+import { Suspense } from 'react'
+import { PostsListSkeleton } from '@/components/skeletons'
 import PageHeader from '@/app/(main)/page-header'
 import PostsList from '@/components/post/posts-list'
-import { PostsListSkeleton } from '@/components/skeletons'
-import { Suspense } from 'react'
 
 export default async function Home({
 	searchParams,

@@ -147,11 +147,11 @@ export default async function PostItem({
 							in Anime Top List
 						</div>
 
-						<EditPostPosition
+						{session && (<EditPostPosition
 							id={post.id}
 							listposition={listposition}
 							list={'list_anime_top'}
-						/>
+						/>)}
 					</div>
 				)}
 			</div>

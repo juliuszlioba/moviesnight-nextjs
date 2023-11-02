@@ -1,4 +1,6 @@
-const { NEXT_PUBLIC_POSTS_LIMIT, NEXT_PUBLIC_POSTS_GRID_LIMIT } = process.env
+const POSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_LIMIT)
+const GRIDPOSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_GRID_LIMIT)
+
 import Link from 'next/link'
 import { toInt } from 'radash'
 import { Button } from './ui/button'
@@ -7,22 +9,26 @@ export default function Pagination({
 	curentPage,
 	totalCount,
 	urlPrefix = '',
+	samepage = false,
 	grid = false,
 }: {
 	curentPage: number
 	totalCount: number
 	urlPrefix?: string | null
+	samepage?: boolean
 	grid?: boolean
 }) {
-	const postsLimit = grid
-		? toInt(NEXT_PUBLIC_POSTS_GRID_LIMIT)
-		: toInt(NEXT_PUBLIC_POSTS_LIMIT)
+	const postsLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 	const lastPage =
 		Math.floor(totalCount / postsLimit) + (totalCount % postsLimit > 0 ? 1 : 0)
 
 	const PageButton = ({ number }: { number: number }) => {
 		return (
-			<Link href={`${urlPrefix === '' ? '' : '/' + urlPrefix}/?page=${number}`}>
+			<Link
+				href={`${urlPrefix === '' ? '' : '/' + urlPrefix}${
+					samepage ? '&' : '/?'
+				}page=${number}`}
+			>
 				<Button variant={'outline'} size={'sm'}>
 					{number}
 				</Button>
@@ -34,7 +40,7 @@ export default function Pagination({
 		return null
 	}
 
-	if (totalCount <= toInt(NEXT_PUBLIC_POSTS_LIMIT)) {
+	if (totalCount <= postsLimit) {
 		return null
 	}
 

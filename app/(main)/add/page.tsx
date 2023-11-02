@@ -1,9 +1,11 @@
 import TmdbList from '@/components/post/tmdb-list'
 import Search from '@/components/search'
+import { SearchImdbListSkeleton } from '@/components/skeletons'
 import { Database } from '@/lib/database.types'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { Suspense } from 'react'
 
 export default async function PostAddPage({
 	searchParams,
@@ -28,7 +30,15 @@ export default async function PostAddPage({
 		<main>
 			<div className="space-y-4">
 				<Search placeholder="Search TMDB" />
-				<TmdbList searchQuery={searchParams?.search} />
+
+				{searchParams?.search && (
+					<Suspense
+						key={`${searchParams.search}`}
+						fallback={<SearchImdbListSkeleton />}
+					>
+						<TmdbList searchQuery={searchParams?.search} />
+					</Suspense>
+				)}
 			</div>
 		</main>
 	)

@@ -1,8 +1,9 @@
-const { NEXT_PUBLIC_POSTS_LIMIT, NEXT_PUBLIC_POSTS_GRID_LIMIT } = process.env
-
 import { Skeleton } from './ui/skeleton'
 import { StarRating } from './star-rating'
 import { toInt } from 'radash'
+
+const POSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_LIMIT)
+const GRIDPOSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_GRID_LIMIT)
 
 export function PageHeaderSkeleton() {
 	return (
@@ -42,9 +43,26 @@ export function PostsListItemSkeleton() {
 	)
 }
 
+export function PostsGridItemSkeleton() {
+	return (
+		<div className="px-1.5 py-3">
+			<div className="flex flex-col gap-2">
+				<div className="relative flex shrink-0 flex-col">
+					<Skeleton className="aspect-[10/15] w-full"></Skeleton>
+				</div>
+				<div className="flex animate-pulse flex-col">
+					<StarRating rating={0} />
+				</div>
+				<Skeleton className="mt-1 h-4 w-full max-w-[256px]"></Skeleton>
+				<Skeleton className="h-4 w-full max-w-[128px]"></Skeleton>
+			</div>
+		</div>
+	)
+}
+
 export function PaginationSkeleton() {
 	return (
-		<div className="flex w-full flex-col items-center gap-4 py-8 sm:flex-row sm:justify-between">
+		<div className="flex w-full flex-col items-center gap-4 py-4 sm:flex-row sm:justify-between">
 			<div className="w-full max-w-[128px] max-sm:hidden">
 				<Skeleton className="h-4 w-full pl-6"></Skeleton>
 			</div>
@@ -60,9 +78,7 @@ export function PaginationSkeleton() {
 }
 
 export function PostsListSkeleton({ grid = false }: { grid?: boolean }) {
-	const postsLimit = grid
-		? toInt(NEXT_PUBLIC_POSTS_GRID_LIMIT)
-		: toInt(NEXT_PUBLIC_POSTS_LIMIT)
+	const postsLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
 
 	return (
 		<div>
@@ -71,6 +87,70 @@ export function PostsListSkeleton({ grid = false }: { grid?: boolean }) {
 				return <PostsListItemSkeleton key={index} />
 			})}
 			<PaginationSkeleton />
+		</div>
+	)
+}
+
+export function SearchWebsiteListSkeleton() {
+	const postsLimit = POSTLIMIT
+
+	return (
+		<div>
+			<div className="flex items-center justify-between border-b-2 border-dashed border-muted pb-4">
+				<Skeleton className="h-3.5 w-full max-w-[128px]"></Skeleton>
+			</div>
+			{[...Array(postsLimit)].map((_, index) => {
+				return <PostsListItemSkeleton key={index} />
+			})}
+			<PaginationSkeleton />
+		</div>
+	)
+}
+
+export function SearchImdbListSkeleton() {
+	return (
+		<div>
+			<div className="flex items-center justify-between border-b-2 border-dashed border-muted pb-4">
+				<Skeleton className="h-3.5 w-full max-w-[128px]"></Skeleton>
+			</div>
+			{[...Array(10)].map((_, index) => {
+				return (
+					<div
+						key={index}
+						className="border-b-2 border-dashed border-muted py-4 first:pt-0 last:border-none"
+					>
+						<div className="flex items-center justify-between gap-3 md:gap-6">
+							<div className="flex w-full gap-3">
+								<Skeleton className="h-36 w-24"></Skeleton>
+
+								<div className="flex w-full flex-col gap-2">
+									<Skeleton className="mt-4 h-5 w-full max-w-[256px]"></Skeleton>
+									<Skeleton className="h-3.5 w-full max-w-[128px]"></Skeleton>
+									<Skeleton className="mt-6 h-9 w-20"></Skeleton>
+								</div>
+							</div>
+							<Skeleton className="h-10 w-24"></Skeleton>
+						</div>
+					</div>
+				)
+			})}
+		</div>
+	)
+}
+
+export function PostsGridSkeleton({ grid = false }: { grid?: boolean }) {
+	const postsLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
+
+	return (
+		<div>
+			<div className="divide-y-2 divide-dashed">
+				<div className="grid grid-cols-2 gap-2 pb-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-10">
+					{[...Array(postsLimit)].map((_, index) => {
+						return <PostsGridItemSkeleton key={index} />
+					})}
+				</div>
+				<PaginationSkeleton />
+			</div>
 		</div>
 	)
 }
