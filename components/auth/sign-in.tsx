@@ -26,7 +26,7 @@ const SignIn = () => {
 	}
 
 	return (
-		<Button onClick={handleSignIn} variant={'ghost'} className="py-3">
+		<Button onClick={handleSignIn} variant={'ghost'} className="px-3 py-3">
 			<UserCircleIcon className="h-6 w-6" width="24" height="24" />
 		</Button>
 	)

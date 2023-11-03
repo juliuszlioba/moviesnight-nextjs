@@ -1,9 +1,9 @@
-import supabaseServerClient from '@/lib/supabase'
 import './styles/globals.css'
-
-import type { Metadata } from 'next'
+import supabaseServerClient from '@/lib/supabase'
+import { Analytics } from '@vercel/analytics/react'
 import { Quicksand } from 'next/font/google'
 import AuthProvider from '@/components/auth-provider'
+import type { Metadata } from 'next'
 
 const quicksand = Quicksand({
 	subsets: ['latin'],
@@ -41,6 +41,7 @@ export default async function RootLayout({
 		>
 			<body>
 				<AuthProvider accessToken={accessToken}>{children}</AuthProvider>
+				<Analytics />
 			</body>
 		</html>
 	)

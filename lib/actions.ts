@@ -2,22 +2,19 @@
 
 import * as z from 'zod'
 
+import supabaseServerClient from '@/lib/supabase'
 import { add, formatISO } from 'date-fns'
 import { toInt } from 'radash'
 import { revalidatePath } from 'next/cache'
 import slugify from '@/lib/slugify'
 import type { PostEditFormSchema } from '@/lib/post.types'
 import type { TMDBresultsEntity } from '@/lib/tmdb.types'
-import supabaseServerClient from '@/lib/supabase'
+import type { ListTypes } from '@/lib/list.types'
 
 export interface Status {
 	status: 'success' | 'error' | 'unauthorised'
 	message?: string | unknown
 	redirectTo?: string
-}
-
-interface ListTypes {
-	list: 'list_anime_top' | 'list_movies_top' | 'list_series_top'
 }
 
 export async function addPost({
@@ -376,16 +373,14 @@ export async function editPostPositionInTopList({
 	}
 }
 
-//TODO NEEDS TESTING!
-export async function updateTopList({
-	id,
-	listType: { list },
-	newList,
-}: {
-	id: number
-	listType: ListTypes
+interface UpdateTopListProps extends ListTypes {
 	newList: number[]
-}): Promise<Status> {
+}
+
+export async function updateTopList({
+	list,
+	newList,
+}: UpdateTopListProps): Promise<Status> {
 	const supabase = await supabaseServerClient()
 	const {
 		data: { session },
@@ -415,6 +410,17 @@ export async function updateTopList({
 				.from(list)
 				.update({ list: newList })
 				.eq('id', listArrayId)
+
+			// Revalidation requests
+			if ((list = 'list_anime_top')) {
+				revalidatePath('/anime', 'page')
+			}
+			if ((list = 'list_movies_top')) {
+				revalidatePath('/top/movie', 'page')
+			}
+			if ((list = 'list_series_top')) {
+				revalidatePath('/top/tv', 'page')
+			}
 
 			return { status: 'success' }
 		} catch (error) {

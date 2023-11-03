@@ -1,6 +1,7 @@
 import supabaseServerClient from '@/lib/supabase'
 import { toInt } from 'radash'
 import type { TMDBresultsEntity } from './tmdb.types'
+import { ListTypes } from './list.types'
 
 const POSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_LIMIT)
 const GRIDPOSTLIMIT = toInt(process.env.NEXT_PUBLIC_POSTS_GRID_LIMIT)
@@ -66,6 +67,28 @@ export async function fetchTopAnimePosts({
 	} catch (error) {
 		console.error('Database Error:', error)
 		throw new Error('Failed to fetch All Posts.')
+	}
+}
+
+interface FetchAllTopPostsProps extends ListTypes {}
+
+export async function fetchAllTopPosts({ list }: FetchAllTopPostsProps) {
+	const supabase = await supabaseServerClient()
+
+	try {
+		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
+
+		const { data: posts, count } = await supabase.rpc(
+			//'list_anime_top',
+			list,
+			{},
+			{ count: 'exact' }
+		)
+
+		return { posts, count: count || 0 }
+	} catch (error) {
+		console.error('Database Error:', error)
+		throw new Error('Failed to fetch All Anime Posts.')
 	}
 }
 

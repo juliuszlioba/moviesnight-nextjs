@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import PageHeader from './page-header'
 
-export default async function AnimePage({
+export default async function TopPage({
 	searchParams,
 	params,
 }: {
@@ -19,7 +19,7 @@ export default async function AnimePage({
 	if (params.mediatype === 'movie') {
 		return (
 			<Suspense key={currentPage} fallback={<PostsListSkeleton />}>
-				<PageHeader />
+				<PageHeader urlPrefix={'top/movie'} />
 				<PostsListTopMoviesPosts currentPage={currentPage} />
 			</Suspense>
 		)
@@ -28,7 +28,7 @@ export default async function AnimePage({
 	if (params.mediatype === 'tv') {
 		return (
 			<Suspense key={currentPage} fallback={<PostsListSkeleton />}>
-				<PageHeader />
+				<PageHeader urlPrefix={'top/tv'} />
 				<PostsListTopSeriesPosts currentPage={currentPage} />
 			</Suspense>
 		)
