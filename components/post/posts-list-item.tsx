@@ -85,7 +85,7 @@ export default function PostsListItem({
 
 							{listRating && positionInList && (
 								<div className="mt-4">
-									<span className="rounded-md bg-primary px-2 py-1">
+									<span className="rounded-md border-2 border-primary px-3 py-1">
 										{positionInList}
 									</span>
 								</div>

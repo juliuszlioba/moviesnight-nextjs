@@ -1,4 +1,4 @@
-import { Clock, FileEdit, Search, Trash } from 'lucide-react'
+import { CalendarCheck, Clock, FileEdit, Search, Trash } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { fetchPost, fetchPostMetadata, getAnimeListPostion } from '@/lib/data'
 
@@ -158,9 +158,10 @@ export default async function PostItem({
 				)}
 			</div>
 
-			<div className="flex justify-between border-t-2 border-dashed border-muted py-4">
+			<div className="flex items-center justify-between border-t-2 border-dashed border-muted py-4">
 				{post.watchedat && (
-					<div>
+					<div className="flex gap-2">
+						<CalendarCheck strokeWidth={1.5} />
 						{isFuture(new Date(post.watchedat))
 							? 'Will finish at'
 							: 'Last watch'}{' '}
@@ -172,7 +173,10 @@ export default async function PostItem({
 					<div className="flex gap-2">
 						<AlertDialog>
 							<AlertDialogTrigger asChild>
-								<Button variant={'ghost'} className="gap-2 text-red-500">
+								<Button
+									variant={'ghost'}
+									className="gap-2 text-red-500 text-opacity-40"
+								>
 									<Trash strokeWidth={1.5} />
 									Delete
 								</Button>

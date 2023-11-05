@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 export default function SiteHeaderGrid() {
 	const pathname = usePathname()
 	return (
-		<div className="grid w-full grid-cols-1 items-center justify-between pb-4 lg:grid-cols-2">
+		<div className="grid w-full grid-cols-1 items-center justify-between gap-4 pb-4 lg:grid-cols-2">
 			<div className="flex w-full items-center justify-between gap-1 lg:justify-start">
 				<div className="flex items-center gap-1">
 					<div className="w-[26px]">

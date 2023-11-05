@@ -19,7 +19,7 @@ export default async function PostsGrid({
 
 	return (
 		<div className="divide-y-2 divide-dashed">
-			<div className="grid grid-cols-2 gap-2 pb-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-10">
+			<div className="grid grid-cols-2 gap-3 pb-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 2xl:grid-cols-10">
 				{posts.map((post, index) => {
 					return <PostsGridItem key={index} post={post} />
 				})}

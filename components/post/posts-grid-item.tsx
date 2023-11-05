@@ -9,7 +9,7 @@ import { format } from 'date-fns'
 export default function PostsGridItem({ post }: { post: Post }) {
 	return (
 		<>
-			<div className="px-1.5 py-3">
+			<div className="py-3">
 				<div className="flex flex-col gap-2">
 					<div className="relative flex shrink-0 flex-col">
 						<Dialog>

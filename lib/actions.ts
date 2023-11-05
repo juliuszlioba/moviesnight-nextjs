@@ -205,14 +205,13 @@ export async function updatePost({
 	if (session) {
 		try {
 			//await new Promise((resolve) => setTimeout(resolve, 3000)) //!
-
 			const { data, error: supabaseError } = await supabase
 				.from('posts')
 				.update({
 					rating: toInt(values.rating),
 					recommendation: values.recommendation,
 					review: values.review,
-					watchedat: formatISO(add(new Date(values.watchedAt), { hours: 12 })),
+					watchedat: formatISO(new Date(values.watchedAt)),
 					updatedat: formatISO(new Date()),
 					linkanime: values.linkanime,
 					recommended: values.recommended,
