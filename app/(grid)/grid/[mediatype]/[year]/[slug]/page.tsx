@@ -1,15 +1,17 @@
-export default async function GridPage({
-	searchParams,
-}: {
-	searchParams?: {
-		page?: string
-	}
-}) {
-	const currentPage = Number(searchParams?.page) || 1
+import PostItem from '@/components/post/post-item-grid'
+import { PostItemSkeleton } from '@/components/skeletons'
+import { Suspense } from 'react'
 
+export default async function GridPage({
+	params,
+}: {
+	params: { year: string; slug: string }
+}) {
 	return (
 		<main className="flex flex-col">
-			<p>Grid | Individual Page</p>
+			<Suspense key={`year-string`} fallback={<PostItemSkeleton />}>
+				<PostItem year={params.year} slug={params.slug} session={null} />
+			</Suspense>
 		</main>
 	)
 }

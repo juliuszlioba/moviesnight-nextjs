@@ -52,7 +52,7 @@ export default function PostsGridItem({ post }: { post: Post }) {
 					</div>
 					<div>
 						<Link
-							href={`/${post.mediatype}/${post.year}/${post.slug}`}
+							href={`/grid/${post.mediatype}/${post.year}/${post.slug}`}
 							className="flex w-full rounded pt-1 focus:ring-2 focus:ring-primary focus-visible:outline-none"
 						>
 							<h2 className="line-clamp-3">{post.title}</h2>
