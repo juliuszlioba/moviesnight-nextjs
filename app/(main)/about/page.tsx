@@ -21,8 +21,7 @@ export default async function AboutPage() {
 						Some records were added retroactively with approximate viewing date.
 					</p>
 					<p>
-						I <strong>do not</strong> add unfinished movies or dropped series to
-						the list.
+						I <strong>do not</strong> add unfinished movies or dropped series to the list, with one exception to some exceptionally good series I am currently watching and I know that will definitely going to finish it.
 					</p>
 				</div>
 				<div>
