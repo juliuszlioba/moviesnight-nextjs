@@ -34,13 +34,14 @@ export default function PostsListItem({
 						<div className="relative flex shrink-0 flex-col">
 							<Dialog>
 								<DialogTrigger>
-									<div className="absolute inset-0 flex w-full rounded-lg border-2 border-primary bg-gradient-to-br from-transparent from-60% to-[#000000BF] to-90% opacity-0 bg-blend-multiply duration-300 hover:opacity-100 focus:border-2">
+									<div className="absolute inset-0 flex w-full rounded-lg border-2 border-primary opacity-0 duration-300 hover:opacity-100 focus:border-2">
 										<div className="absolute -top-2 left-2 rounded-md bg-primary px-2 py-1 text-xs text-white">
 											{format(new Date(post.watchedat!), 'yyyy-MM-dd')}
 										</div>
+
 										<Search
 											strokeWidth={1.5}
-											className="absolute bottom-2 right-2 h-8 w-8 text-primary"
+											className="absolute bottom-2 right-2 h-9 w-9 rounded-lg bg-primary p-1.5 text-white"
 										/>
 									</div>
 								</DialogTrigger>

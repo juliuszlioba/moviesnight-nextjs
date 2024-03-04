@@ -3,7 +3,13 @@
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CalendarIcon, Save, XCircle, AlertCircleIcon } from 'lucide-react'
+import {
+	CalendarIcon,
+	Save,
+	XCircle,
+	AlertCircleIcon,
+	PenLine,
+} from 'lucide-react'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
@@ -195,24 +201,40 @@ export function PostEditForm({
 								</FormItem>
 							)}
 						/>
-						<div className="flex">
-							<FormField
-								control={form.control}
-								name="linkanime"
-								render={({ field }) => (
-									<FormItem className="flex flex-row items-start space-x-3 space-y-0 p-2">
-										<FormControl>
-											<Checkbox
-												checked={field.value}
-												onCheckedChange={field.onChange}
-											/>
-										</FormControl>
-										<div className="space-y-1 leading-none">
-											<FormLabel>Anime List</FormLabel>
-										</div>
-									</FormItem>
+						<div className="flex flex-wrap items-center gap-2">
+							<div className="flex items-center gap-2">
+								<FormField
+									control={form.control}
+									name="linkanime"
+									render={({ field }) => (
+										<FormItem className="flex flex-row items-start space-x-3 space-y-0 p-2">
+											<FormControl>
+												<Checkbox
+													checked={field.value}
+													onCheckedChange={field.onChange}
+												/>
+											</FormControl>
+											<div className="space-y-1 leading-none">
+												<FormLabel>Anime List</FormLabel>
+											</div>
+										</FormItem>
+									)}
+								/>
+								{linkanime && (
+									<Link
+										href={`/${mediatype}/${year}/${slug}`}
+										className={cn(
+											buttonVariants({
+												variant: 'ghost',
+											}),
+											'gap-2 px-3'
+										)}
+									>
+										<PenLine strokeWidth={1.5} />
+										Edit Position
+									</Link>
 								)}
-							/>
+							</div>
 
 							<FormField
 								control={form.control}
