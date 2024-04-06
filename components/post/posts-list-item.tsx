@@ -11,18 +11,18 @@ import { StarRating } from '@/components/star-rating'
 import { Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import { useState } from 'react'
-import type { Session } from '@supabase/supabase-js'
+import type { User } from '@supabase/supabase-js'
 
 export default function PostsListItem({
 	post,
-	session = null,
 	listRating = false,
 	positionInList,
+	auth = null,
 }: {
 	post: Post
-	session: Session | null
 	listRating?: boolean
 	positionInList?: number
+	auth?: User | null
 }) {
 	const [reviewOpen, setOpenReview] = useState(false)
 
@@ -73,7 +73,7 @@ export default function PostsListItem({
 								>
 									<h2 className="text-xl">{post.title}</h2>
 								</Link>
-								{session && (
+								{auth && auth.role === 'authenticated' && (
 									<Link
 										href={`/${post.mediatype}/${post.year}/${post.slug}/edit`}
 										className="rounded-full p-1 text-muted duration-300 hover:text-primary focus:ring-2 focus:ring-primary focus-visible:outline-none"

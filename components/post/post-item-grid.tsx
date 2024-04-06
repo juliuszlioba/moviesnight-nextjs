@@ -8,16 +8,13 @@ import { notFound } from 'next/navigation'
 import { toInt } from 'radash'
 import TmdbLink from '../tmdb-link'
 import { StarRating } from '../star-rating'
-import type { Session } from '@supabase/supabase-js'
 
 export default async function PostItem({
 	year,
 	slug,
-	session = null,
 }: {
 	year: string
 	slug: string
-	session?: Session | null
 }) {
 	const { post } = await fetchPost({
 		slug: slug,
@@ -38,7 +35,7 @@ export default async function PostItem({
 		post.linkanime === true
 			? await getAnimeListPostion({
 					id: post.id,
-			  })
+				})
 			: null
 
 	return (

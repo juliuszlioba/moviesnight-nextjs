@@ -1,7 +1,7 @@
 import TmdbList from '@/components/post/tmdb-list'
 import Search from '@/components/search'
 import { SearchImdbListSkeleton } from '@/components/skeletons'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -12,12 +12,12 @@ export default async function PostAddPage({
 		search?: string
 	}
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (!session) {
+	if (!user) {
 		redirect('/')
 	}
 

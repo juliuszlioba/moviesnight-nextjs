@@ -3,13 +3,13 @@ import Link from 'next/link'
 import Login from './login'
 import { NavPagesDropdown } from './site-header-pages-dropdown'
 import AddPost from './site-header-add-post-button'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 
 export default async function SiteHeader() {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
 	return (
 		<div className="flex items-center justify-between pb-4">
@@ -32,7 +32,7 @@ export default async function SiteHeader() {
 				</Link>
 			</div>
 			<div className="flex items-center gap-2">
-				{session && <AddPost />}
+				{!user && <AddPost />}
 				<NavPagesDropdown />
 				<Login />
 			</div>

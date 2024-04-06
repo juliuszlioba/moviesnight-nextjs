@@ -2,8 +2,8 @@
 
 import * as z from 'zod'
 
-import supabaseServerClient from '@/lib/supabase'
-import { add, formatISO } from 'date-fns'
+import { createClient } from '@/utils/supabase/server'
+import { formatISO } from 'date-fns'
 import { toInt } from 'radash'
 import { revalidatePath } from 'next/cache'
 import slugify from '@/lib/slugify'
@@ -22,13 +22,12 @@ export async function addPost({
 }: {
 	post: TMDBresultsEntity
 }): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
@@ -60,7 +59,7 @@ export async function addPost({
 		return
 	}
 
-	if (session) {
+	if (!user) {
 		try {
 			// 1: check for existing record
 			const slug = slugify(post.title! || post.name!)
@@ -121,17 +120,16 @@ export async function addPostToTopList({
 	id,
 	list,
 }: AddPostToListProps): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			// Get current list
 			const { data: listArray } = await supabase
@@ -192,17 +190,16 @@ export async function updatePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			//await new Promise((resolve) => setTimeout(resolve, 3000)) //!
 			const { data, error: supabaseError } = await supabase
@@ -293,13 +290,12 @@ export async function editPostPositionInTopList({
 	list,
 	position,
 }: EditPostPositionInTopListProps): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
@@ -325,7 +321,7 @@ export async function editPostPositionInTopList({
 		return result
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			// 1. Get current list
 			const { data: listArray } = await supabase
@@ -380,17 +376,16 @@ export async function updateTopList({
 	list,
 	newList,
 }: UpdateTopListProps): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			// Get current list
 			const { data: listArray } = await supabase
@@ -443,17 +438,16 @@ export async function deletePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			// run list checks and ...
 
@@ -510,17 +504,16 @@ export async function removePostFromTopList({
 	list,
 	handlePostMeta = false,
 }: RemovePostToListProps): Promise<Status> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-		error: sessionError,
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (sessionError) {
+	if (!user) {
 		return { status: 'error' }
 	}
 
-	if (session) {
+	if (user) {
 		try {
 			// Get current list
 			const { data: listArray } = await supabase

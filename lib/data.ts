@@ -1,4 +1,4 @@
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { toInt } from 'radash'
 import type { TMDBresultsEntity } from './tmdb.types'
 import { ListTypes } from './list.types'
@@ -15,7 +15,7 @@ export async function fetchAllPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
@@ -33,7 +33,7 @@ export async function fetchAllPosts({
 }
 
 export async function fetchAllPostsCount() {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
@@ -56,7 +56,7 @@ export async function fetchTopAnimePosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -73,7 +73,7 @@ export async function fetchTopAnimePosts({
 interface FetchAllTopPostsProps extends ListTypes {}
 
 export async function fetchAllTopPosts({ list }: FetchAllTopPostsProps) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
@@ -93,7 +93,7 @@ export async function fetchAllTopPosts({ list }: FetchAllTopPostsProps) {
 }
 
 export async function fetchAnimePostsCount() {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		// 1. Get current list
@@ -123,7 +123,7 @@ export async function fetchTopMoviesPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -145,7 +145,7 @@ export async function fetchTopSeriesPosts({
 	grid?: boolean
 }) {
 	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		const { data: posts, count } = await supabase
@@ -166,7 +166,7 @@ export async function fetchPost({
 	slug: string
 	year: number
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		const { data: post } = await supabase
@@ -218,7 +218,7 @@ export async function getAnimeListPostion({
 }: {
 	id: number
 }): Promise<number> {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		//! any
@@ -243,7 +243,7 @@ export async function fetchSearchResults({
 	curentPage?: number
 }) {
 	const postLimit = POSTLIMIT
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 
 	try {
 		const { data: posts, count } = await supabase

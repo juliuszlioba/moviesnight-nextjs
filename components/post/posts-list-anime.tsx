@@ -1,7 +1,7 @@
 import Pagination from '@/components/pagination'
 import PostsListItem from '@/components/post/posts-list-item'
 import { fetchTopAnimePosts } from '@/lib/data'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { notFound } from 'next/navigation'
 import { toInt } from 'radash'
 
@@ -12,10 +12,8 @@ export default async function PostsListAnimePosts({
 }: {
 	currentPage?: number
 }) {
-	const supabase = await supabaseServerClient()
-	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+	const supabase = createClient()
+	const { data } = await supabase.auth.getUser()
 
 	const { posts, count } = await fetchTopAnimePosts({
 		curentPage: currentPage,
@@ -33,7 +31,7 @@ export default async function PostsListAnimePosts({
 						<PostsListItem
 							key={index}
 							post={post}
-							session={session}
+							auth={data.user}
 							positionInList={index + 1 + POSTLIMIT * (currentPage - 1)}
 							listRating={true}
 						/>

@@ -2,7 +2,7 @@ import { ArrowDown10, LayoutGrid } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import {
 	Tooltip,
 	TooltipContent,
@@ -15,10 +15,10 @@ export default async function PageHeader({
 }: {
 	urlPrefix: 'top/movie' | 'top/tv'
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
 	return (
 		<div className="mb-4 flex items-center justify-between border-b-2 border-dashed border-muted pb-4">
@@ -45,7 +45,7 @@ export default async function PageHeader({
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
-				{session && (
+				{!user && (
 					<TooltipProvider>
 						<Tooltip>
 							<TooltipTrigger asChild>

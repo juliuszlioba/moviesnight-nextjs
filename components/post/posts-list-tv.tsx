@@ -1,7 +1,7 @@
 import Pagination from '@/components/pagination'
 import PostsListItem from '@/components/post/posts-list-item'
 import { fetchTopSeriesPosts } from '@/lib/data'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { notFound } from 'next/navigation'
 
 export default async function PostsListTopSeriesPosts({
@@ -9,11 +9,9 @@ export default async function PostsListTopSeriesPosts({
 }: {
 	currentPage?: number
 }) {
-	const supabase = await supabaseServerClient()
-	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+	const supabase = createClient()
 
+	const { data } = await supabase.auth.getUser()
 	const { posts, count } = await fetchTopSeriesPosts({
 		curentPage: currentPage,
 	})
@@ -26,7 +24,7 @@ export default async function PostsListTopSeriesPosts({
 		<div className="divide-y-2 divide-dashed">
 			<div className="divide-y-2 divide-dashed">
 				{posts.map((post, index) => {
-					return <PostsListItem key={index} post={post} session={session} />
+					return <PostsListItem key={index} post={post} auth={data.user} />
 				})}
 			</div>
 			<Pagination

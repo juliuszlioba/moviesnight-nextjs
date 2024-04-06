@@ -1,5 +1,5 @@
 import PostEdit from '@/components/post/post-edit'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
 export default async function PostEditPage({
@@ -7,12 +7,12 @@ export default async function PostEditPage({
 }: {
 	params: { year: string; slug: string }
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (!session) {
+	if (!user) {
 		redirect('/')
 	}
 

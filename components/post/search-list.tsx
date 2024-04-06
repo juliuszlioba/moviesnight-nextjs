@@ -30,7 +30,7 @@ export default async function SearchList({
 				<>
 					<div className="divide-y-2 divide-dashed">
 						{posts.map((post, index) => {
-							return <PostsListItem key={index} post={post} session={null} />
+							return <PostsListItem key={index} post={post} auth={null} />
 						})}
 					</div>
 					<Pagination

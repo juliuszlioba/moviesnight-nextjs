@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 
 export default async function AboutPage() {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const { data, count, error } = await supabase
 		.from('posts')
 		.select('*', { count: 'exact' })
@@ -21,7 +21,10 @@ export default async function AboutPage() {
 						Some records were added retroactively with approximate viewing date.
 					</p>
 					<p>
-						I <strong>do not</strong> add unfinished movies or dropped series to the list, with one exception to some exceptionally good series I am currently watching and I know that will definitely going to finish it.
+						I <strong>do not</strong> add unfinished movies or dropped series to
+						the list, with one exception to some exceptionally good series I am
+						currently watching and I know that will definitely going to finish
+						it.
 					</p>
 				</div>
 				<div>

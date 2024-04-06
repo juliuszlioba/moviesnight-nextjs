@@ -4,19 +4,19 @@ import {
 	PostListSortableListSkeleton,
 	PostsListSkeleton,
 } from '@/components/skeletons'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { Suspense } from 'react'
 import PageHeader from '../page-header'
 
 export default async function AnimeSortPage() {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
 	return (
 		<>
-			{session ? (
+			{!user ? (
 				<Suspense fallback={<PostListSortableListSkeleton />}>
 					<PostsListSortableAnimePosts />
 				</Suspense>

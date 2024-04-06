@@ -1,22 +1,21 @@
 import PostsListSortableMoviesPosts from '@/components/post/posts-list-movies-sortable'
 import PostsListSortableSeriesPosts from '@/components/post/posts-list-tv-sortable'
 import { PostListSortableListSkeleton } from '@/components/skeletons'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
-//import PageHeader from './page-header'
 
 export default async function AnimeSortPage({
 	params,
 }: {
 	params: { mediatype: string }
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
-	if (!session) {
+	if (!user) {
 		redirect('/')
 	}
 

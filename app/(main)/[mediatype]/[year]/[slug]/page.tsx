@@ -1,6 +1,6 @@
 import PostItem from '@/components/post/post-item'
 import { PostItemSkeleton } from '@/components/skeletons'
-import supabaseServerClient from '@/lib/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { Suspense } from 'react'
 
 export default async function PostPage({
@@ -8,15 +8,15 @@ export default async function PostPage({
 }: {
 	params: { year: string; slug: string }
 }) {
-	const supabase = await supabaseServerClient()
+	const supabase = createClient()
 	const {
-		data: { session },
-	} = await supabase.auth.getSession()
+		data: { user },
+	} = await supabase.auth.getUser()
 
 	return (
 		<main>
 			<Suspense key={`year-string`} fallback={<PostItemSkeleton />}>
-				<PostItem year={params.year} slug={params.slug} session={session} />
+				<PostItem year={params.year} slug={params.slug} auth={user} />
 			</Suspense>
 		</main>
 	)

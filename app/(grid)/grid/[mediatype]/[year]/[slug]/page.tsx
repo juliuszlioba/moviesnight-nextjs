@@ -10,7 +10,7 @@ export default async function GridPage({
 	return (
 		<main className="flex flex-col">
 			<Suspense key={`year-string`} fallback={<PostItemSkeleton />}>
-				<PostItem year={params.year} slug={params.slug} session={null} />
+				<PostItem year={params.year} slug={params.slug} />
 			</Suspense>
 		</main>
 	)

@@ -11,7 +11,7 @@ import { StarRating } from '../star-rating'
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '../ui/button'
 import Link from 'next/link'
-import type { Session } from '@supabase/supabase-js'
+import type { User } from '@supabase/supabase-js'
 
 import {
 	AlertDialog,
@@ -29,11 +29,11 @@ import EditPostPosition from './post-list-item-top-position'
 export default async function PostItem({
 	year,
 	slug,
-	session = null,
+	auth = null,
 }: {
 	year: string
 	slug: string
-	session?: Session | null
+	auth?: User | null
 }) {
 	const { post } = await fetchPost({
 		slug: slug,
@@ -54,7 +54,7 @@ export default async function PostItem({
 		post.linkanime === true
 			? await getAnimeListPostion({
 					id: post.id,
-			  })
+				})
 			: null
 
 	return (
@@ -147,7 +147,7 @@ export default async function PostItem({
 							in Anime Top List
 						</div>
 
-						{session && (
+						{auth && auth.role === 'authenticated' && (
 							<EditPostPosition
 								id={post.id}
 								listposition={listposition}
@@ -169,7 +169,7 @@ export default async function PostItem({
 					</div>
 				)}
 
-				{session && (
+				{auth && auth.role === 'authenticated' && (
 					<div className="flex gap-2">
 						<AlertDialog>
 							<AlertDialogTrigger asChild>

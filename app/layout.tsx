@@ -1,8 +1,8 @@
 import './styles/globals.css'
-import supabaseServerClient from '@/lib/supabase'
+//import { createClient } from '@/utils/supabase/server'
 import { Analytics } from '@vercel/analytics/react'
 import { Quicksand } from 'next/font/google'
-import AuthProvider from '@/components/auth-provider'
+//import AuthProvider from '@/components/auth-provider'
 import type { Metadata } from 'next'
 
 const quicksand = Quicksand({
@@ -25,14 +25,6 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const supabase = await supabaseServerClient()
-
-	const {
-		data: { session },
-	} = await supabase.auth.getSession()
-
-	const accessToken = session?.access_token || null
-
 	return (
 		<html
 			lang="en"
@@ -40,7 +32,7 @@ export default async function RootLayout({
 			suppressHydrationWarning
 		>
 			<body>
-				<AuthProvider accessToken={accessToken}>{children}</AuthProvider>
+				{children}
 				<Analytics />
 			</body>
 		</html>
