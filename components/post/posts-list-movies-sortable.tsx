@@ -1,6 +1,6 @@
 import { fetchAllTopPosts } from '@/lib/data'
 import { notFound } from 'next/navigation'
-import PostsListSortableList from './posts-list-sortable-list'
+import PostsSortableList from '@/components/drag-and-drop-sortable-list'
 
 export default async function PostsListSortableMoviesPosts() {
 	const { posts, count } = await fetchAllTopPosts({ list: 'list_movies_top' })
@@ -10,10 +10,8 @@ export default async function PostsListSortableMoviesPosts() {
 	}
 
 	return (
-		<div className="divide-y-2 divide-dashed">
-			<div className="divide-y-2 divide-dashed">
-				<PostsListSortableList posts={posts} list={'list_movies_top'} />
-			</div>
+		<div>
+			<PostsSortableList posts={posts} list={'list_movies_top'} />
 		</div>
 	)
 }

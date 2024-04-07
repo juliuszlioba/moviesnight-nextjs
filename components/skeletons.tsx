@@ -194,17 +194,17 @@ export function PostItemSkeleton() {
 export function PostListSortableListItemSkeleton() {
 	return (
 		<div className="flex items-center gap-2 border-b-2 border-dashed border-muted py-2 first:pt-0 last:border-none">
-			<Skeleton className="h-8 w-11 shrink-0"></Skeleton>
+			<Skeleton className="h-10 w-10"></Skeleton>
+			<Skeleton className="h-10 w-10"></Skeleton>
 			<div className="flex  w-full items-center justify-between gap-4 p-1">
 				<div className="flex w-full flex-row items-center gap-4">
-					<Skeleton className="h-20 w-14 shrink-0"></Skeleton>
-					<div className="flex w-full flex-col gap-x-4 gap-y-2 md:flex-row md:justify-between">
+					<Skeleton className="h-16 w-12 shrink-0"></Skeleton>
+					<div className="flex w-full flex-col gap-x-4 gap-y-2 md:flex-row md:items-center md:justify-between">
 						<Skeleton className="h-3.5 w-full max-w-[128px]"></Skeleton>
 						<div>
 							<StarRating rating={0} />
 						</div>
 					</div>
-					<Skeleton className="h-10 w-12"></Skeleton>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import { ArrowDown10, LayoutGrid } from 'lucide-react'
+import { ArrowDown01, LayoutGrid } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -9,8 +9,13 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { createClient } from '@/utils/supabase/server'
 
 export default async function PageHeader() {
+	const supabase = createClient()
+	const {
+		data: { user },
+	} = await supabase.auth.getUser()
 	const { count } = await fetchAnimePostsCount()
 
 	return (
@@ -41,28 +46,29 @@ export default async function PageHeader() {
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
-
-				<TooltipProvider>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Link href="/anime/sort">
-								<div
-									className={cn(
-										buttonVariants({
-											variant: 'ghost',
-										}),
-										'px-3'
-									)}
-								>
-									<ArrowDown10 strokeWidth={1.5} className="h-6 w-6" />
-								</div>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent>
-							<p>Sort</p>
-						</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
+				{user && (
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Link href="/anime/sort">
+									<div
+										className={cn(
+											buttonVariants({
+												variant: 'ghost',
+											}),
+											'px-3'
+										)}
+									>
+										<ArrowDown01 strokeWidth={1.5} className="h-6 w-6" />
+									</div>
+								</Link>
+							</TooltipTrigger>
+							<TooltipContent>
+								<p>Sort</p>
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+				)}
 			</div>
 		</div>
 	)

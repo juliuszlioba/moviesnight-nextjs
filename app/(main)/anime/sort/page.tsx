@@ -17,13 +17,13 @@ export default async function AnimeSortPage() {
 	return (
 		<>
 			{!user ? (
-				<Suspense fallback={<PostListSortableListSkeleton />}>
-					<PostsListSortableAnimePosts />
-				</Suspense>
-			) : (
 				<Suspense fallback={<PostsListSkeleton />}>
 					<PageHeader />
 					<PostsListAllAnimePosts />
+				</Suspense>
+			) : (
+				<Suspense fallback={<PostListSortableListSkeleton />}>
+					<PostsListSortableAnimePosts />
 				</Suspense>
 			)}
 		</>

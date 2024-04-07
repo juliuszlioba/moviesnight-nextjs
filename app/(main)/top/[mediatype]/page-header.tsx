@@ -1,4 +1,4 @@
-import { ArrowDown10, LayoutGrid } from 'lucide-react'
+import { ArrowDown01, LayoutGrid } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -45,7 +45,7 @@ export default async function PageHeader({
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
-				{!user && (
+				{user && (
 					<TooltipProvider>
 						<Tooltip>
 							<TooltipTrigger asChild>
@@ -58,7 +58,7 @@ export default async function PageHeader({
 											'px-3'
 										)}
 									>
-										<ArrowDown10 strokeWidth={1.5} className="h-6 w-6" />
+										<ArrowDown01 strokeWidth={1.5} className="h-6 w-6" />
 									</div>
 								</Link>
 							</TooltipTrigger>
