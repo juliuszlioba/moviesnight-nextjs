@@ -64,8 +64,8 @@ export function PostEditForm({
 		defaultValues: {
 			id: id,
 			rating: String(rating),
-			recommendation: String(recommendation),
-			review: String(review),
+			recommendation: recommendation ? String(recommendation) : '',
+			review: review ? String(review) : '',
 			linkanime: Boolean(linkanime),
 			recommended: Boolean(recommended),
 			watchedAt: new Date(String(watchedat)),
