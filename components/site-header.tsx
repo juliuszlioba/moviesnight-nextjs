@@ -32,7 +32,7 @@ export default async function SiteHeader() {
 				</Link>
 			</div>
 			<div className="flex items-center gap-2">
-				{!user && <AddPost />}
+				{user && <AddPost />}
 				<NavPagesDropdown />
 				<Login />
 			</div>

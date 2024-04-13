@@ -59,7 +59,7 @@ export async function addPost({
 		return
 	}
 
-	if (!user) {
+	if (user) {
 		try {
 			// 1: check for existing record
 			const slug = slugify(post.title! || post.name!)
