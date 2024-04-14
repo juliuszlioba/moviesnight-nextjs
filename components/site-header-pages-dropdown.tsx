@@ -1,4 +1,4 @@
-import { Clapperboard, Heart, Menu, Search } from 'lucide-react'
+import { Clapperboard, Heart, Menu, Search, Tv } from 'lucide-react'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -33,7 +33,7 @@ export function NavPagesDropdown() {
 				</DropdownMenuItem>
 				<DropdownMenuItem className="text-base" asChild>
 					<Link href="/top/tv" className="flex items-center">
-						<Clapperboard strokeWidth={1.5} className="mr-2 h-5 w-5" />
+						<Tv strokeWidth={1.5} className="mr-2 h-5 w-5" />
 						Series Top
 					</Link>
 				</DropdownMenuItem>

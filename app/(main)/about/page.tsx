@@ -16,15 +16,20 @@ export default async function AboutPage() {
 						This website serves me as simple personal list of recently seen
 						movies and series.
 					</p>
-					<p>{`Curently there is ${count} titles of Movies and Series on the list since I started tracking what I watch on March 13, 2016.`}</p>
+					<p>
+						Curently there is{' '}
+						<span className="text-lg font-bold text-primary">{count}</span>{' '}
+						titles of Movies and Series on the list since I started tracking
+						what I watch on March 13, 2016.
+					</p>
 					<p>
 						Some records were added retroactively with approximate viewing date.
 					</p>
 					<p>
-						I <strong>do not</strong> add unfinished movies or dropped series to
-						the list, with one exception to some exceptionally good series I am
-						currently watching and I know that will definitely going to finish
-						it.
+						I <span className="text-lg font-bold text-primary">do not</span> add
+						unfinished movies or dropped series to the list, with one exception
+						to some exceptionally good series I am currently watching and I know
+						that will definitely going to finish it.
 					</p>
 				</div>
 				<div>

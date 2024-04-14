@@ -45,13 +45,13 @@ export default function PostsListItem({
 										/>
 									</div>
 								</DialogTrigger>
-								<DialogContent className="p-0">
+								<DialogContent className="rounded-md border-none p-2">
 									<Image
 										src={`https://image.tmdb.org/t/p/w500${post.poster}`}
 										alt={post.title || 'poster'}
 										width={500}
 										height={750}
-										className="max-h-screen w-full overflow-hidden rounded-lg bg-muted object-contain"
+										className="max-h-screen w-full overflow-hidden rounded-lg border-none object-contain"
 										unoptimized={true}
 									/>
 								</DialogContent>
@@ -69,7 +69,7 @@ export default function PostsListItem({
 							<div className="flex items-start justify-between gap-2 pt-4 md:justify-start">
 								<Link
 									href={`/${post.mediatype}/${post.year}/${post.slug}`}
-									className="rounded-md pt-1 focus:ring-2 focus:ring-primary focus-visible:outline-none"
+									className="-ml-1 rounded-md px-1.5 py-0.5 focus:ring-2 focus:ring-primary focus-visible:outline-none"
 								>
 									<h2 className="text-xl">{post.title}</h2>
 								</Link>
@@ -102,7 +102,7 @@ export default function PostsListItem({
 										<Button
 											onClick={() => setOpenReview(!reviewOpen)}
 											variant={'ghost'}
-											className="text-primary"
+											className="gap-1 text-primary"
 										>
 											<MessageCircle strokeWidth={1.5} className="h-6 w-6" />
 											More...

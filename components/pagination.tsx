@@ -70,7 +70,9 @@ export default function Pagination({
 				{curentPage < lastPage ? (
 					<PageButton number={lastPage} />
 				) : (
-					<Button size={'sm'}>{lastPage}</Button>
+					<Button variant={'default'} size={'sm'}>
+						{lastPage}
+					</Button>
 				)}
 			</div>
 		</div>

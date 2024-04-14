@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { toInt } from 'radash'
 import { PostEditForm } from './post-edit-form'
+import EditPostPosition from './post-list-item-top-position'
 
 export default async function PostEdit({
 	year,
@@ -19,6 +20,13 @@ export default async function PostEdit({
 	if (!post) {
 		notFound()
 	}
+
+	const listposition =
+		post.linkanime === true
+			? await getAnimeListPostion({
+					id: post.id,
+				})
+			: null
 
 	return (
 		<div>
@@ -44,6 +52,23 @@ export default async function PostEdit({
 			</div>
 
 			<PostEditForm {...post} />
+
+			{post.linkanime && listposition && (
+				<div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-md border-2 border-dashed bg-muted/30 p-4">
+					<div className="flex items-center gap-2">
+						Anime Top List:
+						<span className="flex h-10 items-center rounded-md border-2 border-primary px-3 py-1">
+							{listposition}
+						</span>
+					</div>
+
+					<EditPostPosition
+						id={post.id}
+						listposition={listposition}
+						list="list_anime_top"
+					/>
+				</div>
+			)}
 		</div>
 	)
 }

@@ -321,10 +321,14 @@ function ListItem({
 				ref={ref}
 				className={`relative flex items-center gap-2 py-2 ${draggableState.type === 'dragging' && 'opacity-50'}`}
 			>
-				<div className="flex">
+				<div className="flex gap-2">
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button variant={'ghost'} size={'icon'}>
+							<Button
+								variant={'ghost'}
+								size={'icon'}
+								className="border-2 border-primary"
+							>
 								{index + 1}
 							</Button>
 						</DropdownMenuTrigger>

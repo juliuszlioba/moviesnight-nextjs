@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircleIcon, PenLine, Save } from 'lucide-react'
+import { AlertCircleIcon, PenLine, Save, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 import {
@@ -91,6 +91,15 @@ export default function EditPostPosition({
 						) : (
 							<Loader />
 						)}
+
+						<Button
+							variant={'ghost'}
+							size={'icon'}
+							className="gap-2"
+							onClick={() => setOpenEdit(false)}
+						>
+							<X strokeWidth={1.5} />
+						</Button>
 					</div>
 				</form>
 			</Form>

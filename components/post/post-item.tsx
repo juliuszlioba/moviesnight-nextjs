@@ -139,12 +139,12 @@ export default async function PostItem({
 				)}
 
 				{post.linkanime && listposition && (
-					<div className="flex items-center justify-between gap-8 border-t-2 border-dashed border-muted pt-4">
+					<div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-t-2 border-dashed border-muted pt-4">
 						<div className="flex items-center gap-2">
-							<span className="rounded-md bg-primary px-2 py-0.5">
+							Anime Top List at position
+							<span className="flex h-10 items-center rounded-md border-2 border-primary px-3 py-1">
 								{listposition}
 							</span>
-							in Anime Top List
 						</div>
 
 						{auth && auth.role === 'authenticated' && (

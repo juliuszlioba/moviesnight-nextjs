@@ -15,7 +15,7 @@ export default function NotFound() {
 		<main className="flex h-full flex-col items-center justify-center gap-4">
 			<FileWarning size={36} strokeWidth={1.5} />
 			<h2 className="text-2xl">404 | Not Found</h2>
-			<Button variant="outline" onClick={handleRefresh}>
+			<Button variant="default" onClick={handleRefresh}>
 				Go Back
 			</Button>
 		</main>

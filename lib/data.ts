@@ -1,3 +1,5 @@
+'use server'
+
 import { createClient } from '@/utils/supabase/server'
 import { toInt } from 'radash'
 import type { TMDBresultsEntity } from './tmdb.types'

@@ -220,20 +220,6 @@ export function PostEditForm({
 										</FormItem>
 									)}
 								/>
-								{linkanime && (
-									<Link
-										href={`/${mediatype}/${year}/${slug}`}
-										className={cn(
-											buttonVariants({
-												variant: 'ghost',
-											}),
-											'gap-2 px-3'
-										)}
-									>
-										<PenLine strokeWidth={1.5} />
-										Edit Position
-									</Link>
-								)}
 							</div>
 
 							<FormField

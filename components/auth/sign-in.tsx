@@ -27,7 +27,12 @@ const SignIn = () => {
 
 	return (
 		<Button onClick={handleSignIn} variant={'ghost'} className="px-3 py-3">
-			<UserCircleIcon className="h-6 w-6" width="24" height="24" />
+			<UserCircleIcon
+				className="h-6 w-6"
+				width="24"
+				height="24"
+				strokeWidth={1.5}
+			/>
 		</Button>
 	)
 }
