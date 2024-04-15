@@ -24,7 +24,7 @@ export default function PostsGridItem({ post }: { post: Post }) {
 									/>
 								</div>
 							</DialogTrigger>
-							<DialogContent className="p-0">
+							<DialogContent className="rounded-md border-none p-2">
 								<Image
 									src={`https://image.tmdb.org/t/p/w500${post.poster}`}
 									alt={post.title || 'poster'}

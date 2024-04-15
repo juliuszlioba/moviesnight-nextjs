@@ -1,4 +1,11 @@
-import { CalendarCheck, Clock, FileEdit, Search, Trash } from 'lucide-react'
+import {
+	CalendarCheck,
+	Clock,
+	FileEdit,
+	Search,
+	ThumbsUp,
+	Trash,
+} from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { fetchPost, fetchPostMetadata, getAnimeListPostion } from '@/lib/data'
 
@@ -138,11 +145,24 @@ export default async function PostItem({
 					</div>
 				)}
 
+				{post.recommended && (
+					<div className="flex flex-wrap items-center justify-start gap-2 border-t-2 border-dashed border-muted pt-4">
+						<ThumbsUp strokeWidth={1.5} className="text-yellow-400" />
+						Highly recommended to see!
+					</div>
+				)}
+
 				{post.linkanime && listposition && (
 					<div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-t-2 border-dashed border-muted pt-4">
-						<div className="flex items-center gap-2">
-							Anime Top List at position
-							<span className="flex h-10 items-center rounded-md border-2 border-primary px-3 py-1">
+						<div className="flex items-center gap-1">
+							<Link
+								href="/anime"
+								className="text-white underline decoration-primary/50 decoration-2 underline-offset-2 hover:text-primary"
+							>
+								Anime Top List
+							</Link>{' '}
+							position
+							<span className="ml-1 inline-flex h-9 items-center rounded-md border-2 border-primary px-3 py-1">
 								{listposition}
 							</span>
 						</div>

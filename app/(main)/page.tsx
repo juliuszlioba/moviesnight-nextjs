@@ -41,7 +41,7 @@ export default async function Home({
 										alt="My Avatar"
 										width="512"
 										height="512"
-										className="w-20 rounded-full border-2 border-muted"
+										className="w-20 rounded-full border-2 border-muted bg-[#efe8cc]"
 									></Image>
 								</TooltipTrigger>
 								<TooltipContent>
