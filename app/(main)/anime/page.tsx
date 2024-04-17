@@ -4,7 +4,6 @@ import { Suspense } from 'react'
 import PageHeader from './page-header'
 import { createClient } from '@/utils/supabase/server'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import {
@@ -13,7 +12,6 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Clapperboard, Heart, Tv } from 'lucide-react'
 
 export default async function AnimePage({
 	searchParams,

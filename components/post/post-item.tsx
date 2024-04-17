@@ -180,7 +180,7 @@ export default async function PostItem({
 
 			<div className="flex items-center justify-between border-t-2 border-dashed border-muted py-4">
 				{post.watchedat && (
-					<div className="flex gap-2">
+					<div className="flex gap-2" suppressHydrationWarning>
 						<CalendarCheck strokeWidth={1.5} />
 						{isFuture(new Date(post.watchedat))
 							? 'Will finish at'

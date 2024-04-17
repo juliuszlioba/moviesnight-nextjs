@@ -15,7 +15,10 @@ export default function PostsGridItem({ post }: { post: Post }) {
 						<Dialog>
 							<DialogTrigger>
 								<div className="absolute inset-0 flex w-full rounded-lg border-2 border-primary opacity-0 duration-300 hover:opacity-100 focus:border-2">
-									<div className="absolute -top-2 left-2 rounded-md bg-primary px-2 py-1 text-xs text-white">
+									<div
+										className="absolute -top-2 left-2 rounded-md bg-primary px-2 py-1 text-xs text-white"
+										suppressHydrationWarning
+									>
 										{format(new Date(post.watchedat!), 'yyyy-MM-dd')}
 									</div>
 									<Search

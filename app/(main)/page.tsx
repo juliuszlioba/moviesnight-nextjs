@@ -29,7 +29,7 @@ export default async function Home({
 	const currentPage = Number(searchParams?.page) || 1
 
 	return (
-		<main className="flex flex-col space-y-4">
+		<main>
 			{!user && currentPage === 1 && (
 				<div className="my-4 ml-8 space-y-1 rounded-md border-2 border-muted bg-muted/50 p-4 md:mb-12 md:ml-14 md:mt-10">
 					<div className="-ml-12 flex items-center gap-4 md:-ml-14">

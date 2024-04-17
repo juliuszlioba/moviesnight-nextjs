@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { PostsGridSkeleton } from '@/components/skeletons'
-import PostsGridTopMoviesPosts from '@/components/post/posts-grid-movies'
-import PostsGridTopSeriesPosts from '@/components/post/posts-grid-tv'
+import PostsGridTopMoviesPosts from '@/components/post/posts-grid-movies-top'
+import PostsGridTopSeriesPosts from '@/components/post/posts-grid-tv-top'
 
 export default async function GridPage({
 	searchParams,

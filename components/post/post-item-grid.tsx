@@ -106,7 +106,10 @@ export default async function PostItem({
 								</div>
 							)}
 							{post.watchedat && (
-								<div className="mt-6 flex gap-1 border-t-2 border-dashed border-gray-800 pt-4">
+								<div
+									className="mt-6 flex gap-1 border-t-2 border-dashed border-gray-800 pt-4"
+									suppressHydrationWarning
+								>
 									<CalendarCheck strokeWidth={1.5} />
 									{isFuture(new Date(post.watchedat))
 										? 'Will finish at'
