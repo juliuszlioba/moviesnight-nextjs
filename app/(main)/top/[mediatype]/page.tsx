@@ -1,5 +1,5 @@
-import PostsListTopMoviesPosts from '@/components/post/posts-list-movies'
-import PostsListTopSeriesPosts from '@/components/post/posts-list-tv'
+import PostsListTopMoviesPosts from '@/components/post/posts-list-movies-top'
+import PostsListTopSeriesPosts from '@/components/post/posts-list-tv-top'
 import { PostsListSkeleton } from '@/components/skeletons'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'

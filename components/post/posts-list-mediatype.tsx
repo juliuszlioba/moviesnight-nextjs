@@ -1,18 +1,23 @@
 import Pagination from '@/components/pagination'
 import PostsListItem from '@/components/post/posts-list-item'
-import { fetchAllPosts } from '@/lib/data'
+import { fetchAllMediatypePosts } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 
-export default async function PostsList({
+export default async function PostsListAllByMediatype({
+	mediatype,
 	currentPage = 1,
 }: {
+	mediatype: string
 	currentPage?: number
 }) {
 	const supabase = createClient()
 
 	const { data } = await supabase.auth.getUser()
-	const { posts, count } = await fetchAllPosts({ curentPage: currentPage })
+	const { posts, count } = await fetchAllMediatypePosts({
+		curentPage: currentPage,
+		mediatype: mediatype,
+	})
 
 	if (!posts) {
 		return notFound()
@@ -25,7 +30,11 @@ export default async function PostsList({
 					return <PostsListItem key={index} post={post} auth={data.user} />
 				})}
 			</div>
-			<Pagination curentPage={currentPage} totalCount={count} />
+			<Pagination
+				curentPage={currentPage}
+				totalCount={count}
+				urlPrefix={mediatype}
+			/>
 		</div>
 	)
 }

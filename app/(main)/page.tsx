@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { PostsListSkeleton } from '@/components/skeletons'
 import PageHeader from '@/app/(main)/page-header'
-import PostsList from '@/components/post/posts-list'
+import PostsListAll from '@/components/post/posts-list-all'
 import { createClient } from '@/utils/supabase/server'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -91,7 +91,7 @@ export default async function Home({
 
 			<Suspense key={currentPage} fallback={<PostsListSkeleton />}>
 				<PageHeader />
-				<PostsList currentPage={currentPage} />
+				<PostsListAll currentPage={currentPage} />
 			</Suspense>
 		</main>
 	)

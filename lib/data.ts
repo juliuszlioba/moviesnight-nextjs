@@ -34,6 +34,34 @@ export async function fetchAllPosts({
 	}
 }
 
+export async function fetchAllMediatypePosts({
+	mediatype,
+	curentPage = 1,
+	grid = false,
+}: {
+	mediatype: string
+	curentPage?: number
+	grid?: boolean
+}) {
+	const postLimit = grid ? GRIDPOSTLIMIT : POSTLIMIT
+	const supabase = createClient()
+
+	try {
+		// await new Promise((resolve) => setTimeout(resolve, 3000)) //!
+		const { data: posts, count } = await supabase
+			.from('posts')
+			.select('*', { count: 'exact' })
+			.eq('mediatype', mediatype)
+			.order('watchedat', { ascending: false })
+			.range(postLimit * curentPage - postLimit, postLimit * curentPage - 1)
+
+		return { posts, count: count || 0 }
+	} catch (error) {
+		console.error('Database Error:', error)
+		throw new Error('Failed to fetch All Posts.')
+	}
+}
+
 export async function fetchAllPostsCount() {
 	const supabase = createClient()
 
