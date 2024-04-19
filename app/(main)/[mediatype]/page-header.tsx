@@ -25,15 +25,16 @@ export default function PageHeader({ mediatype }: { mediatype: string }) {
 										buttonVariants({
 											variant: 'ghost',
 										}),
-										'px-3'
+										'gap-1 px-3'
 									)}
 								>
 									<Clapperboard strokeWidth={1.5} className="h-6 w-6" />
+									<span className="max-sm:hidden">Movies</span>
 								</div>
 							</Link>
 						</TooltipTrigger>
 						<TooltipContent>
-							<p>Movies</p>
+							<p>Show only Movies</p>
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
@@ -47,15 +48,16 @@ export default function PageHeader({ mediatype }: { mediatype: string }) {
 										buttonVariants({
 											variant: 'ghost',
 										}),
-										'px-3'
+										'gap-1 px-3'
 									)}
 								>
 									<Tv strokeWidth={1.5} className="h-6 w-6" />
+									<span className="max-sm:hidden">Series</span>
 								</div>
 							</Link>
 						</TooltipTrigger>
 						<TooltipContent>
-							<p>Series</p>
+							<p>Show only Series</p>
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
