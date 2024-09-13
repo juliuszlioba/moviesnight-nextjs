@@ -192,6 +192,7 @@ export function PostEditForm({
 												mode="single"
 												selected={field.value}
 												onSelect={field.onChange}
+												//@ts-ignore
 												initialFocus
 											/>
 										</PopoverContent>

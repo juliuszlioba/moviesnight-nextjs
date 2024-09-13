@@ -1,8 +1,6 @@
 import './styles/globals.css'
-//import { createClient } from '@/utils/supabase/server'
 import { Analytics } from '@vercel/analytics/react'
 import { Quicksand } from 'next/font/google'
-//import AuthProvider from '@/components/auth-provider'
 import type { Metadata } from 'next'
 
 const quicksand = Quicksand({
