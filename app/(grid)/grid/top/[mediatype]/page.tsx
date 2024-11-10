@@ -3,16 +3,15 @@ import { PostsGridSkeleton } from '@/components/skeletons'
 import PostsGridTopMoviesPosts from '@/components/post/posts-grid-movies-top'
 import PostsGridTopSeriesPosts from '@/components/post/posts-grid-tv-top'
 
-export default async function GridPage({
-	searchParams,
-	params,
-}: {
-	searchParams?: {
+export default async function GridPage(props: {
+	searchParams?: Promise<{
 		page?: string
-	}
-	params: { mediatype: string }
+	}>
+	params: Promise<{ mediatype: string }>
 }) {
-	const currentPage = Number(searchParams?.page) || 1
+	const params = await props.params
+	const { page } = (await props.searchParams) || {}
+	const currentPage = Number(page) || 1
 
 	if (params.mediatype === 'movie') {
 		return (

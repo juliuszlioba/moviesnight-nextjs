@@ -9,7 +9,7 @@ import { Suspense } from 'react'
 import PageHeader from '../page-header'
 
 export default async function AnimeSortPage() {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()

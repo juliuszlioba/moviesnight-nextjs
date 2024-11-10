@@ -1,3 +1,4 @@
+import { Database } from '@/lib/database.types'
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
@@ -6,7 +7,7 @@ export async function updateSession(request: NextRequest) {
 		request,
 	})
 
-	const supabase = createServerClient(
+	createServerClient<Database>(
 		process.env.NEXT_PUBLIC_SUPABASE_URL!,
 		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 		{
@@ -15,7 +16,7 @@ export async function updateSession(request: NextRequest) {
 					return request.cookies.getAll()
 				},
 				setAll(cookiesToSet) {
-					cookiesToSet.forEach(({ name, value, options }) =>
+					cookiesToSet.forEach(({ name, value }) =>
 						request.cookies.set(name, value)
 					)
 					supabaseResponse = NextResponse.next({
@@ -33,19 +34,19 @@ export async function updateSession(request: NextRequest) {
 	// supabase.auth.getUser(). A simple mistake could make it very hard to debug
 	// issues with users being randomly logged out.
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser()
+	// const {
+	//   data: { user },
+	// } = await supabase.auth.getUser();
 
 	// if (
-	// 	!user &&
-	// 	!request.nextUrl.pathname.startsWith('/login') &&
-	// 	!request.nextUrl.pathname.startsWith('/auth')
+	//   !user &&
+	//   !request.nextUrl.pathname.startsWith("/login") &&
+	//   !request.nextUrl.pathname.startsWith("/auth")
 	// ) {
-	// 	// no user, potentially respond by redirecting the user to the login page
-	// 	const url = request.nextUrl.clone()
-	// 	url.pathname = '/login'
-	// 	return NextResponse.redirect(url)
+	//   // no user, potentially respond by redirecting the user to the login page
+	//   const url = request.nextUrl.clone();
+	//   url.pathname = "/login";
+	//   return NextResponse.redirect(url);
 	// }
 
 	// IMPORTANT: You *must* return the supabaseResponse object as it is. If you're

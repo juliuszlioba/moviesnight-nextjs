@@ -5,11 +5,12 @@ import PostsGridAnime from '@/components/post/posts-grid-anime'
 export default async function GridPage({
 	searchParams,
 }: {
-	searchParams?: {
+	searchParams?: Promise<{
 		page?: string
-	}
+	}>
 }) {
-	const currentPage = Number(searchParams?.page) || 1
+	const { page } = (await searchParams) || {}
+	const currentPage = Number(page) || 1
 
 	return (
 		<main className="flex flex-col">

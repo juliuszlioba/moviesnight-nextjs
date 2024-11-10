@@ -12,7 +12,7 @@ export default async function PostsListAnimePosts({
 }: {
 	currentPage?: number
 }) {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const { data } = await supabase.auth.getUser()
 
 	const { posts, count } = await fetchTopAnimePosts({

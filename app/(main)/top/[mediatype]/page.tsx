@@ -5,16 +5,15 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import PageHeader from './page-header'
 
-export default async function TopPage({
-	searchParams,
-	params,
-}: {
-	searchParams?: {
+export default async function TopPage(props: {
+	searchParams?: Promise<{
 		page?: string
-	}
-	params: { mediatype: string }
+	}>
+	params: Promise<{ mediatype: string }>
 }) {
-	const currentPage = Number(searchParams?.page) || 1
+	const params = await props.params
+	const { page } = (await props.searchParams) || {}
+	const currentPage = Number(page) || 1
 
 	if (params.mediatype === 'movie') {
 		return (

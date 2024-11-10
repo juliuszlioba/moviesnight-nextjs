@@ -12,7 +12,7 @@ import {
 import { createClient } from '@/utils/supabase/server'
 
 export default async function PageHeader() {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()

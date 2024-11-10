@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 
 export default async function PostsListAllAnimePosts() {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const { data } = await supabase.auth.getUser()
 
 	const { posts, count } = await fetchAllTopPosts({ list: 'list_anime_top' })

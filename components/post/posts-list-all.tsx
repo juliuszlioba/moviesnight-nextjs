@@ -9,7 +9,7 @@ export default async function PostsListAll({
 }: {
 	currentPage?: number
 }) {
-	const supabase = createClient()
+	const supabase = await createClient()
 
 	const { data } = await supabase.auth.getUser()
 	const { posts, count } = await fetchAllPosts({ curentPage: currentPage })

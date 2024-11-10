@@ -1,14 +1,15 @@
 import { ContinueButton } from './button'
 
-export default function Page({
-	searchParams,
-}: {
-	searchParams?: {
-		error?: string
-		error_description?: string
-	}
-}) {
-	return (
+export default async function Page(
+    props: {
+        searchParams?: Promise<{
+            error?: string
+            error_description?: string
+        }>
+    }
+) {
+    const searchParams = await props.searchParams;
+    return (
 		<div className="grid items-center pb-8 text-center">
 			<div className="flex flex-col justify-center">
 				<div className="pb-4">

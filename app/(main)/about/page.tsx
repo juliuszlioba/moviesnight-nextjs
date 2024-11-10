@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { createClient } from '@/utils/supabase/server'
 
 export default async function AboutPage() {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const { data, count, error } = await supabase
 		.from('posts')
 		.select('*', { count: 'exact' })

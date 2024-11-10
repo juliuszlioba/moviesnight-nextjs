@@ -167,7 +167,7 @@ export function PostEditForm({
 							control={form.control}
 							name="watchedAt"
 							render={({ field }) => (
-								<FormItem className="flex flex-col">
+								<FormItem className="">
 									<Popover>
 										<PopoverTrigger asChild>
 											<FormControl>
@@ -187,7 +187,7 @@ export function PostEditForm({
 												</Button>
 											</FormControl>
 										</PopoverTrigger>
-										<PopoverContent className="w-auto p-0" align="start">
+										<PopoverContent className="w-auto p-0" align="center">
 											<Calendar
 												mode="single"
 												selected={field.value}

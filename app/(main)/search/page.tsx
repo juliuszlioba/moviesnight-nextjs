@@ -3,15 +3,15 @@ import Search from '@/components/search'
 import { SearchWebsiteListSkeleton } from '@/components/skeletons'
 import { Suspense } from 'react'
 
-export default async function AnimePage({
-	searchParams,
-}: {
-	searchParams?: {
+export default async function AnimePage(props: {
+	searchParams?: Promise<{
 		page?: string
 		search?: string
-	}
+	}>
 }) {
-	const currentPage = Number(searchParams?.page) || 1
+	const searchParams = await props.searchParams
+	const { page } = searchParams || {}
+	const currentPage = Number(page) || 1
 
 	return (
 		<div className="space-y-4">

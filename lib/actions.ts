@@ -22,7 +22,7 @@ export async function addPost({
 }: {
 	post: TMDBresultsEntity
 }): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -120,7 +120,7 @@ export async function addPostToTopList({
 	id,
 	list,
 }: AddPostToListProps): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -190,7 +190,7 @@ export async function updatePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -290,7 +290,7 @@ export async function editPostPositionInTopList({
 	list,
 	position,
 }: EditPostPositionInTopListProps): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -376,7 +376,7 @@ export async function updateTopList({
 	list,
 	newList,
 }: UpdateTopListProps): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -438,7 +438,7 @@ export async function deletePost({
 		recommended: boolean
 	}
 }): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
@@ -504,7 +504,7 @@ export async function removePostFromTopList({
 	list,
 	handlePostMeta = false,
 }: RemovePostToListProps): Promise<Status> {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()

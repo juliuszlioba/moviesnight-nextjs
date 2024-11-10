@@ -11,7 +11,7 @@ export default async function PostsListAllByMediatype({
 	mediatype: string
 	currentPage?: number
 }) {
-	const supabase = createClient()
+	const supabase = await createClient()
 
 	const { data } = await supabase.auth.getUser()
 	const { posts, count } = await fetchAllMediatypePosts({

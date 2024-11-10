@@ -5,21 +5,22 @@ import { createClient } from '@/utils/supabase/server'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
-export default async function AnimeSortPage({
-	params,
-}: {
-	params: { mediatype: string }
-}) {
-	const supabase = createClient()
-	const {
+export default async function AnimeSortPage(
+    props: {
+        params: Promise<{ mediatype: string }>
+    }
+) {
+    const params = await props.params;
+    const supabase = await createClient()
+    const {
 		data: { user },
 	} = await supabase.auth.getUser()
 
-	if (!user) {
+    if (!user) {
 		redirect('/')
 	}
 
-	if (params.mediatype === 'movie') {
+    if (params.mediatype === 'movie') {
 		return (
 			<>
 				<Suspense fallback={<PostListSortableListSkeleton />}>
@@ -29,7 +30,7 @@ export default async function AnimeSortPage({
 		)
 	}
 
-	if (params.mediatype === 'tv') {
+    if (params.mediatype === 'tv') {
 		return (
 			<Suspense fallback={<PostListSortableListSkeleton />}>
 				<PostsListSortableSeriesPosts />
@@ -37,5 +38,5 @@ export default async function AnimeSortPage({
 		)
 	}
 
-	return notFound()
+    return notFound()
 }

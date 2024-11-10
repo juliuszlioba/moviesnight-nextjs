@@ -15,7 +15,7 @@ export default async function PageHeader({
 }: {
 	urlPrefix: 'top/movie' | 'top/tv'
 }) {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()

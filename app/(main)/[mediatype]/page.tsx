@@ -3,16 +3,15 @@ import { PostsListSkeleton } from '@/components/skeletons'
 import { Suspense } from 'react'
 import PageHeader from './page-header'
 
-export default async function PostPage({
-	params,
-	searchParams,
-}: {
-	params: { mediatype: string }
-	searchParams?: {
+export default async function PostPage(props: {
+	params: Promise<{ mediatype: string }>
+	searchParams?: Promise<{
 		page?: string
-	}
+	}>
 }) {
-	const currentPage = Number(searchParams?.page) || 1
+	const params = await props.params
+	const { page } = (await props.searchParams) || {}
+	const currentPage = Number(page) || 1
 
 	return (
 		<main>

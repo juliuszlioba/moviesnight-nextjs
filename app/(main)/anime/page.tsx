@@ -16,15 +16,17 @@ import {
 export default async function AnimePage({
 	searchParams,
 }: {
-	searchParams?: {
+	searchParams?: Promise<{
 		page?: string
-	}
+	}>
 }) {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
-	const currentPage = Number(searchParams?.page) || 1
+
+	const { page } = (await searchParams) || {}
+	const currentPage = Number(page) || 1
 
 	return (
 		<main className="flex flex-col space-y-4">

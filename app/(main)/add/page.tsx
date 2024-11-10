@@ -5,23 +5,24 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
-export default async function PostAddPage({
-	searchParams,
-}: {
-	searchParams?: {
-		search?: string
-	}
-}) {
-	const supabase = createClient()
-	const {
+export default async function PostAddPage(
+    props: {
+        searchParams?: Promise<{
+            search?: string
+        }>
+    }
+) {
+    const searchParams = await props.searchParams;
+    const supabase = await createClient()
+    const {
 		data: { user },
 	} = await supabase.auth.getUser()
 
-	if (!user) {
+    if (!user) {
 		redirect('/')
 	}
 
-	return (
+    return (
 		<main>
 			<div className="space-y-4">
 				<Search placeholder="Search TMDB" />

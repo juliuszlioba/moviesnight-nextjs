@@ -6,9 +6,10 @@ import AddPost from './site-header-add-post-button'
 import { createClient } from '@/utils/supabase/server'
 
 export default async function SiteHeader() {
-	const supabase = createClient()
+	const supabase = await createClient()
 	const {
 		data: { user },
+		error,
 	} = await supabase.auth.getUser()
 
 	return (

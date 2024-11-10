@@ -18,15 +18,16 @@ import { Clapperboard, Heart, Tv } from 'lucide-react'
 export default async function Home({
 	searchParams,
 }: {
-	searchParams?: {
+	searchParams?: Promise<{
 		page?: string
-	}
+	}>
 }) {
-	const supabase = createClient()
+	const { page } = (await searchParams) || {}
+	const supabase = await createClient()
 	const {
 		data: { user },
 	} = await supabase.auth.getUser()
-	const currentPage = Number(searchParams?.page) || 1
+	const currentPage = Number(page) || 1
 
 	return (
 		<main>

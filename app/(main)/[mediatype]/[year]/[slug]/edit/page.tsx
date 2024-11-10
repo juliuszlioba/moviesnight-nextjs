@@ -2,21 +2,22 @@ import PostEdit from '@/components/post/post-edit'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
-export default async function PostEditPage({
-	params,
-}: {
-	params: { year: string; slug: string }
-}) {
-	const supabase = createClient()
-	const {
+export default async function PostEditPage(
+    props: {
+        params: Promise<{ year: string; slug: string }>
+    }
+) {
+    const params = await props.params;
+    const supabase = await createClient()
+    const {
 		data: { user },
 	} = await supabase.auth.getUser()
 
-	if (!user) {
+    if (!user) {
 		redirect('/')
 	}
 
-	return (
+    return (
 		<main>
 			<PostEdit year={params.year} slug={params.slug} />
 		</main>
